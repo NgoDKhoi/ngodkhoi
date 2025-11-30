@@ -1,84 +1,380 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
+
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngô Đình Khôi - Portfolio</title>
+    <title>DKhoi - Portfolio</title>
+    <link rel="icon" href="portfolio_image/favicon.png" type="image/png">
 
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10b981', // Emerald 500
+                        primaryHover: '#059669', // Emerald 600
+                        dark: '#0f172a',    // Slate 900
+                        card: '#1e293b',    // Slate 800
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
-    <!-- ...existing code... -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-    <!-- Icon trang web -->
-    <link rel="icon" type="image/png" href="portfolio_image/icon_web.jpg">
+        /* Gradient xanh lá cho chữ */
+        .gradient-text {
+            background: linear-gradient(to right, #34d399, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hiệu ứng Glow nhẹ */
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
+    </style>
 </head>
 
-<body>
-    <!-- Thanh điều hướng -->
-    <header>
-        <nav>
-            <h1>Ngô Đình Khôi</h1>
-            <ul>
-                <li><a href="#about">Giới thiệu</a></li>
-                <li><a href="#skills">Kỹ năng</a></li>
-                <li><a href="#projects">Dự án</a></li>
-                <li><a href="#contact">Liên hệ</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-dark text-slate-300 selection:bg-primary selection:text-white">
 
-    <!-- Giới thiệu -->
-    <section id="about">
-        <h2>👋 Xin chào!</h2>
-        <p>Mình là sinh viên đang theo học ngành <b>Mạng máy tính và Truyền thông Dữ liệu</b> khóa 2024 tại
-            <b>Trường Đại học Công nghệ Thông tin</b>.
-            Mình có định hướng theo học an ninh mạng hoặc là phát triển web3 nên là đang tìm hiểu thử cả hai.
-        </p>
-    </section>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-sm border-b border-slate-700/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-xl text-white tracking-wider">
+                    <span class="text-primary">&lt;</span> DKhoi <span class="text-primary">/&gt;</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-primary transition px-3 py-2 rounded-md font-medium">Giới
+                            thiệu</a>
+                        <a href="#skills" class="hover:text-primary transition px-3 py-2 rounded-md font-medium">Kỹ
+                            năng</a>
+                        <a href="#projects" class="hover:text-primary transition px-3 py-2 rounded-md font-medium">Dự
+                            án</a>
+                        <a href="#contact"
+                            class="border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-md font-medium transition duration-300">Liên
+                            hệ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Kỹ năng -->
-    <section id="skills">
-        <h2>🛠 Kỹ năng</h2>
-        <ul>
-            <li>C++ cơ bản</li>
-            <li>HTML / CSS cơ bản </li>
-            <li>Git & GitHub cơ bản</li>
-        </ul>
-    </section>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute top-20 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-20 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
 
-    <!-- Dự án -->
-    <section id="projects">
-        <h2>🚀 Dự án</h2>
-        <div class="project">
-            <h3>Chưa có gì hết !!</h3>
-            <p>(Để sẵn link github, nào có thì sửa lại hehehe)</p>
-            <a href="https://github.com/NgoDKhoi" target="_blank">Xem trên GitHub</a>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center">
+            <div class="w-full md:w-1/2 pr-0 md:pr-10 text-center md:text-left mt-10 md:mt-0">
+                <p class="text-primary font-mono mb-3 tracking-wide">Hello world, tôi là</p>
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+                    Ngô Đình Khôi
+                </h1>
+                <!-- Subtitle  -->
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-slate-400">
+                    <span class="gradient-text">Second-year Student</span>
+                </h2>
+                <!-- Cập nhật Mô tả theo file mới -->
+                <p class="text-lg text-slate-400 mb-8 leading-relaxed">
+                    Một sinh viên với định hướng trở thành Game Developer, luôn mong muốn phát triển kỹ năng và tạo ra
+                    những sản phẩm game sáng tạo.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#projects"
+                        class="bg-primary hover:bg-primaryHover text-white px-8 py-3 rounded-lg font-medium transition shadow-lg shadow-primary/25">
+                        Xem Dự Án
+                    </a>
+                    <a href="https://github.com/NgoDKhoi" target="_blank"
+                        class="border border-slate-600 hover:border-primary hover:text-primary text-slate-400 px-4 py-3 text-2xl rounded-lg transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <!-- Cập nhật Facebook theo file mới -->
+                    <a href="https://facebook.com/ngo.d.khoi.2024" target="_blank"
+                        class="border border-slate-600 hover:border-[#1877f2] hover:text-[#1877f2] text-slate-400 px-4 py-3 text-2xl rounded-lg transition">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Avatar -->
+            <div class="w-full md:w-1/2 flex justify-center relative">
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <div
+                        class="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 animate-[spin_10s_linear_infinite]">
+                    </div>
+                    <div
+                        class="absolute inset-0 rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl shadow-primary/20 glow-effect">
+                        <img src="portfolio_image/avatar.png" alt="Ngô Đình Khôi" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Tech badges floating -->
+                    <div
+                        class="absolute -bottom-4 -right-4 bg-card border border-slate-700 p-3 rounded-lg shadow-xl animate-bounce">
+                        <i class="fab fa-unity text-2xl text-white"></i>
+                    </div>
+                    <div
+                        class="absolute top-10 -left-8 bg-card border border-slate-700 p-3 rounded-lg shadow-xl animate-pulse">
+                        <i class="fas fa-network-wired text-2xl text-primary"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Liên hệ -->
-    <section id="contact">
-        <h2>📬 Liên hệ</h2>
-        <p>
-            <img src="portfolio_image/my_email_image.jpg" alt="Email" style="height:24px; vertical-align:middle;">
-            <a href="mailto:khoi123719@gmail.com" style="vertical-align:middle;">khoi123719@gmail.com</a>
-        </p>
-        <p>
-            <img src="portfolio_image/github_logo.jpg" alt="GitHub" style="height:24px; vertical-align:middle;">
-            <a href="https://github.com/NgoDKhoi" target="_blank" style="vertical-align:middle;">NgoDKhoi</a>
-        </p>
-        <p>
-            <img src="portfolio_image/linkedin_logo.jpg" alt="LinkedIn" style="height:24px; vertical-align:middle;">
-            <a href="https://www.linkedin.com/in/kh%C3%B4i-ng%C3%B4-737259336/" target="_blank"
-                style="vertical-align:middle;">Khôi Ngô</a>
-        </p>
-
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-card/30 border-y border-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-8 inline-block relative">
+                Về Tôi
+                <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary rounded-full"></span>
+            </h2>
+            <!-- Cotent -->
+            <p class="text-lg text-slate-300 leading-relaxed mb-6">
+                Tôi hiện tại là sinh viên năm 2 chuyên ngành <strong>Mạng máy tính và Truyền thông Dữ liệu</strong> khóa
+                2024 tại trường <strong>Đại học Công nghệ Thông tin (UIT)</strong>. Định hướng tương lai của tôi là trở
+                thành một <strong>Game Developer</strong> chuyên nghiệp. Ngoài việc học tập, tôi còn là một người đam mê
+                điện ảnh, với tôi việc coi phim không chỉ đơn thuần là để giải trí mà còn là nguồn cảm hứng giúp tôi tư
+                duy
+                về World-building và Storytelling, từ đó tạo ra nhiều trải nghiệm thú vị cho Gameplay
+            </p>
+            <!-- Thêm Badge cho about section -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <div
+                    class="inline-flex items-center bg-primary/10 rounded-lg px-6 py-3 border border-primary/20 hover:border-primary/50 transition cursor-default">
+                    <i class="fas fa-users text-primary mr-3"></i>
+                    <span class="font-medium text-primary">Ủy viên Ban Chấp Hành Chi hội MMTT2024.2</span>
+                </div>
+                <div
+                    class="inline-flex items-center bg-primary/10 rounded-lg px-6 py-3 border border-primary/20 hover:border-primary/50 transition cursor-default">
+                    <i class="fas fa-graduation-cap text-primary mr-3"></i>
+                    <span class="font-medium text-primary">IT Student</span>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>© 2025 Ngô Đình Khôi</p>
+    <!-- Skills Section -->
+    <section id="skills" class="py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white">Kỹ Năng Chuyên Môn</h2>
+                <p class="text-slate-400 mt-4">Bộ công cụ tôi sử dụng để xây dựng thế giới ảo</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Programming Languages -->
+                <div
+                    class="bg-card p-8 rounded-2xl border border-slate-700 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition duration-300 group">
+                    <div
+                        class="w-14 h-14 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition">
+                        <i class="fas fa-code text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Programming Languages </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> C++</li>
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> C#</li>
+                    </ul>
+                </div>
+
+                <!-- Backend & Database -->
+                <div
+                    class="bg-card p-8 rounded-2xl border border-slate-700 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition duration-300 group">
+                    <div
+                        class="w-14 h-14 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition">
+                        <i class="fas fa-database text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Backend & DB</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> .NET Framework</li>
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> SQL Server</li>
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Firebase (Realtime)</li>
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> SQL</li>
+                    </ul>
+                </div>
+
+                <!-- Networking & Tools -->
+                <div
+                    class="bg-card p-8 rounded-2xl border border-slate-700 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition duration-300 group">
+                    <div
+                        class="w-14 h-14 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition">
+                        <i class="fas fa-network-wired text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Network & Tools</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Git & GitHub</li>
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Network Computer (Basic)</li>
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Unity Engine</li>
+                        <li class="flex items-center text-slate-300"><i
+                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Windows Forms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-card/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Dự Án Tiêu Biểu</h2>
+            <div
+                class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group">
+                <!-- Project Visual -->
+                <div class="md:w-1/2 bg-black/50 flex items-center justify-center p-12 relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20">
+                    </div>
+                    <div
+                        class="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-transparent to-black/80 z-10">
+                    </div>
+
+                    <div class="relative z-20 transform group-hover:scale-105 transition duration-500">
+                        <i class="fas fa-bomb text-8xl text-primary animate-pulse-slow"></i>
+                        <i class="fas fa-cat text-6xl text-white absolute -bottom-2 -right-4 drop-shadow-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Project Info - Cập nhật nội dung chi tiết -->
+                <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span
+                            class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">
+                            Game </span>
+                        <span
+                            class="px-3 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded uppercase tracking-wider">
+                            Đồ án môn học NT106 </span>
+                    </div>
+
+                    <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition">Exploding Kittens
+                        Game App</h3>
+
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        Ứng dụng game thẻ bài chiến thuật dựa trên trò chơi nổi tiếng Exploding Kittens (mèo nổ). Dự án
+                        tập trung vào trải nghiệm nhiều người chơi thông qua mạng.
+                    </p>
+
+                    <div class="mb-6">
+                        <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Công nghệ
+                        </h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300">Unity</span>
+                            <span
+                                class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300">C#</span>
+                            <span
+                                class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300">Firebase</span>
+                        </div>
+                    </div>
+
+                    <!-- Thêm phần đóng góp của tôi -->
+                    <div class="mb-8">
+                        <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Đóng góp
+                            của tôi</h4>
+                        <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
+                            <li>Thiết kế UI, logic, luồng hoạt động trận đấu.</li>
+                            <li>Code logic trận đấu (khởi tạo bộ bài, logic chia bài, quản lý lượt, rút bài và xử lý...)
+                                bằng C#.</li>
+                            <li>Tạo và code tính năng cho các button trong trận đấu.</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="flex-1 text-center px-6 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg transition font-medium shadow-lg shadow-primary/20">
+                            <i class="fas fa-play mr-2"></i> Demo
+                        </a>
+                        <a href="https://github.com/NgoDKhoi/Meo_Boom" target="_blank"
+                            class="flex-1 text-center px-6 py-3 border border-slate-600 hover:border-white text-white rounded-lg transition font-medium">
+                            <i class="fab fa-github mr-2"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">Liên Hệ</h2>
+            <p class="text-slate-400 mb-12 text-lg">
+                Tôi luôn sẵn sàng cho những thử thách mới. Hãy kết nối với tôi!
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Email (Dùng email thật của bạn) -->
+                <a href="mailto:Khoi123719@gmail.com"
+                    class="group bg-card p-6 rounded-xl border border-slate-700 hover:border-primary transition duration-300">
+                    <div
+                        class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="text-white font-medium mb-1">Email</h3>
+                    <p class="text-slate-400 text-sm group-hover:text-primary transition">Khoi123719@gmail.com</p>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank"
+                    class="group bg-card p-6 rounded-xl border border-slate-700 hover:border-primary transition duration-300">
+                    <div
+                        class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-[#0077b5] group-hover:text-white transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <h3 class="text-white font-medium mb-1">LinkedIn</h3>
+                    <p class="text-slate-400 text-sm group-hover:text-[#0077b5] transition">Kết nối ngay</p>
+                </a>
+
+                <!-- Facebook (Theo file mới) -->
+                <a href="https://facebook.com/ngo.d.khoi.2024" target="_blank"
+                    class="group bg-card p-6 rounded-xl border border-slate-700 hover:border-primary transition duration-300">
+                    <div
+                        class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-[#1877f2] group-hover:text-white transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <h3 class="text-white font-medium mb-1">Facebook</h3>
+                    <p class="text-slate-400 text-sm group-hover:text-[#1877f2] transition">Kết nối ngay</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-slate-800 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">
+                © 2025 Ngô Đình Khôi. Built with HTML & Tailwind CSS & Artificial Intelligence.
+            </p>
+        </div>
     </footer>
 </body>
 
