@@ -49,12 +49,9 @@
   </a>
 </p>
 
-<h2 align="center"><b>💻 Languages & Tools | Have placed My Hands On</b></h2>
+<h2 align="center">🛠️ Tech Stack & Developer Tools</h2>
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=cpp,cs,dotnet,unity,firebase,git,linux,visualstudio,vscode,html,css,js,arduino,blender,aws,raspberrypi,docker" />
-  </a>
-  <a href="https://www.wireshark.org/" target="_blank">
-    <img src="https://img.shields.io/badge/%20-167C94?style=for-the-badge&logo=wireshark&logoColor=white" height="50" alt="wireshark" />
+    <img src="https://skillicons.dev/icons?i=cpp,cs,html,css,js,dotnet,unity,firebase,visualstudio,vscode,arduino,raspberrypi,blender,aws,docker,linux,git" />
   </a>
 </p>
