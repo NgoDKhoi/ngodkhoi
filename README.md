@@ -1,13 +1,55 @@
-<h1 align="center">Hi 👋, I'm Ngo Dinh Khoi</h1>
-<h3 align="center">A tudent majoring in Computer Networks and Data Communications at the University of Information Technology (UIT), VNU-HCM.</h3>
 
-- 👨‍💻 All of my projects are available at [ngodkhoi.vercel.app](https://ngodkhoi.vercel.app)
-- 📫 How to reach me **khoi123719@gmail.com**
+<h2 align="center">
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&pause=1000&color=10B981&center=true&vCenter=true&width=500&lines=%E2%9D%82+I'm+Ngo+Dinh+Khoi;Second-year+Student+at+UIT;Aspiring+Game+Developer" alt="Typing SVG" /></a>
+</h2>
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://linkedin.com/in/ngodkhoi" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ngodkhoi" height="30" width="40" /></a>
+<p align="center">
+  <b>
+  🔥 I'm currently a second-year student majoring in Computer Networks and Data Communications at the University of Information Technology (UIT), VNU-HCM. With a strong passion for Game Development (Unity & C#), I love building interactive game worlds and crafting engaging gameplay experiences.
+  </b>
 </p>
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/> </a> <a href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> <a href="https://unity.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg" alt="unity" width="40" height="40"/> </a> </p>
+
+<h3>💫 About Me</h3>
+
+<img align="right" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGpsejFycG5ic2duejJ5bHpud2pwbWpnamkzc2kyeGdrYWJtdmc2ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xUA7bdpLxQhsSQdyog/giphy.gif" width="220" alt="coding gif">
+
+📌 <b> Studying Computer Networks and Data Communications at UIT, VNU-HCM (Class of 2024).</b> <br>
+🛠️ <b> Passionate about Game Development, specialized in Unity Engine and C#.</b> <br>
+🎬 <b> Movie enthusiast – finding gameplay and world-building inspiration in cinema.</b> <br>
+👥 <b> Executive Committee Member of the Computer Networks 2024.2 student branch.</b> <br>
+🚀 <b> Always eager to learn new technologies and improve communication & soft skills.</b> <br>
+
+<h3>🔗 Connect with me</h3>
+
+<p>
+  <a href="mailto:Khoi123719@gmail.com" target="_blank">
+    <img src="https://skillicons.dev/icons?i=gmail" alt="gmail"/>
+  </a>
+  <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank">
+    <img src="https://skillicons.dev/icons?i=linkedin" alt="linkedin"/>
+  </a>
+  <a href="https://facebook.com/ngo.d.khoi.2024" target="_blank">
+    <img src="https://skillicons.dev/icons?i=facebook" alt="facebook"/>
+  </a>
+  <a href="https://ngodkhoi.vercel.app/" target="_blank">
+    <img src="https://skillicons.dev/icons?i=vercel" alt="portfolio"/>
+  </a>
+</p>
+
+<h2 align="center">📊 GitHub Stats</h2>
+<p align="center">
+  <a href="https://github.com/NgoDKhoi">
+    <img src="https://github-readme-stats.vercel.app/api?username=NgoDKhoi&show_icons=true&theme=react&hide_border=false&border_radius=8" height="180" />
+  </a>
+  <a href="https://github.com/NgoDKhoi">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NgoDKhoi&layout=compact&theme=react&hide_border=false&border_radius=8" height="180" />
+  </a>
+</p>
+
+<h2 align="center"><b>💻 Languages & Tools | Have placed My Hands On</b></h2>
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=cpp,cs,dotnet,unity,firebase,mssql,git,linux,visualstudio,vscode,html,css,js" />
+  </a>
+</p>
