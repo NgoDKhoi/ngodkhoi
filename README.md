@@ -52,7 +52,7 @@
 <h2 align="center"><b>💻 Languages & Tools | Have placed My Hands On</b></h2>
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=cpp,cs,dotnet,unity,firebase,mssql,git,linux,visualstudio,vscode,html,css,js,arduino,blender,slack" />
+    <img src="https://skillicons.dev/icons?i=cpp,cs,dotnet,unity,firebase,git,linux,visualstudio,vscode,html,css,js,arduino,blender,aws,raspberrypi,docker" />
   </a>
   <a href="https://www.wireshark.org/" target="_blank">
     <img src="https://img.shields.io/badge/%20-167C94?style=for-the-badge&logo=wireshark&logoColor=white" height="50" alt="wireshark" />
