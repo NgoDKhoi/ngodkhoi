@@ -24,32 +24,37 @@
 
 <p>
   <a href="mailto:Khoi123719@gmail.com" target="_blank">
-    <img src="https://skillicons.dev/icons?i=gmail" alt="gmail"/>
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="gmail"/>
   </a>
   <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank">
-    <img src="https://skillicons.dev/icons?i=linkedin" alt="linkedin"/>
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin"/>
   </a>
   <a href="https://facebook.com/ngo.d.khoi.2024" target="_blank">
-    <img src="https://skillicons.dev/icons?i=facebook" alt="facebook"/>
+    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="facebook"/>
   </a>
   <a href="https://ngodkhoi.vercel.app/" target="_blank">
-    <img src="https://skillicons.dev/icons?i=vercel" alt="portfolio"/>
+    <img src="https://img.shields.io/badge/Portfolio-10B981?style=for-the-badge&logo=vercel&logoColor=white" alt="portfolio"/>
   </a>
 </p>
 
-<h2 align="center">📊 GitHub Stats</h2>
+<h2 align="center">📊 GitHub Stats & Trophies</h2>
 <p align="center">
   <a href="https://github.com/NgoDKhoi">
-    <img src="https://github-readme-stats.vercel.app/api?username=NgoDKhoi&show_icons=true&theme=react&hide_border=false&border_radius=8" height="180" />
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=NgoDKhoi&theme=react&hide_border=false&border_radius=8" />
   </a>
+</p>
+<p align="center">
   <a href="https://github.com/NgoDKhoi">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NgoDKhoi&layout=compact&theme=react&hide_border=false&border_radius=8" height="180" />
+    <img src="https://github-profile-trophy.vercel.app/?username=NgoDKhoi&theme=onedark&column=5" />
   </a>
 </p>
 
 <h2 align="center"><b>💻 Languages & Tools | Have placed My Hands On</b></h2>
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=cpp,cs,dotnet,unity,firebase,mssql,git,linux,visualstudio,vscode,html,css,js" />
+    <img src="https://skillicons.dev/icons?i=cpp,cs,dotnet,unity,firebase,mssql,git,linux,visualstudio,vscode,html,css,js,arduino,blender,slack" />
+  </a>
+  <a href="https://www.wireshark.org/" target="_blank">
+    <img src="https://img.shields.io/badge/%20-167C94?style=for-the-badge&logo=wireshark&logoColor=white" height="50" alt="wireshark" />
   </a>
 </p>
