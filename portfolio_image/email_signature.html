@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DKhoi - Email Signature Generator</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center p-3 bg-emerald-500/10 rounded-xl mb-4 border border-emerald-500/20">
+        <i class="fa-solid fa-signature text-3xl text-emerald-400"></i>
+      </div>
+      <h1 class="text-3xl font-bold tracking-tight text-white">Chữ Ký Email Chuyên Nghiệp</h1>
+      <p class="mt-2 text-slate-400">Dành cho Ngô Đình Khôi - Sinh viên UIT</p>
+    </div>
+
+    <!-- Main Card -->
+    <div class="bg-slate-800 rounded-2xl border border-slate-700/80 shadow-2xl p-6 sm:p-8 mb-8">
+      <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-eye text-emerald-400"></i> Xem trước chữ ký
+      </h2>
+
+      <!-- Signature Render Container -->
+      <div class="bg-white rounded-xl p-6 overflow-x-auto border border-slate-600 shadow-inner flex justify-center">
+        <!-- START OF EMAIL SIGNATURE -->
+        <div id="signature-container">
+          <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #334155; line-height: 1.5; text-align: left; background-color: #ffffff; padding: 10px; border-radius: 8px;">
+            <tr>
+              <!-- Avatar Column -->
+              <td valign="top" style="padding-right: 18px; vertical-align: top;">
+                <img src="https://raw.githubusercontent.com/NgoDKhoi/ngodkhoi/main/portfolio_image/avatar.jpg" alt="Ngô Đình Khôi" width="100" height="100" style="border-radius: 50%; object-fit: cover; border: 3px solid #10b981; display: block;" />
+              </td>
+              
+              <!-- Vertical Divider -->
+              <td valign="top" style="border-left: 2px solid #e2e8f0; padding-left: 18px; vertical-align: top;">
+                <!-- Name -->
+                <div style="font-size: 20px; font-weight: bold; color: #0f172a; line-height: 1.2; font-family: Arial, Helvetica, sans-serif;">Ngô Đình Khôi</div>
+                
+                <!-- Major / Title -->
+                <div style="font-size: 13px; color: #10b981; font-weight: bold; margin-top: 4px; font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; letter-spacing: 0.5px;">
+                  Sinh viên Mạng máy tính & Truyền thông Dữ liệu
+                </div>
+                
+                <!-- UIT Logo & School Name Table -->
+                <table cellpadding="0" cellspacing="0" border="0" style="margin-top: 10px; width: 100%;">
+                  <tr>
+                    <td valign="middle" style="padding-right: 8px; width: 26px;">
+                      <img src="https://raw.githubusercontent.com/NgoDKhoi/ngodkhoi/main/portfolio_image/uit-logo.png" alt="UIT Logo" width="24" height="24" style="display: block; width: 24px; height: 24px;" />
+                    </td>
+                    <td valign="middle" style="font-size: 12px; color: #475569; font-weight: bold; line-height: 1.3; font-family: Arial, Helvetica, sans-serif;">
+                      Trường Đại học Công nghệ Thông tin - ĐHQG TP.HCM
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Divider line -->
+                <div style="margin-top: 12px; margin-bottom: 12px; border-top: 1px dashed #cbd5e1; height: 1px; line-height: 1px; font-size: 1px;">&nbsp;</div>
+
+                <!-- Contact Details Table -->
+                <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; font-size: 12px; color: #475569; font-family: Arial, Helvetica, sans-serif;">
+                  <tr>
+                    <td style="padding-bottom: 4px; line-height: 1.4;">
+                      <strong style="color: #64748b;">Email:</strong> <a href="mailto:khoi123719@gmail.com" style="color: #10b981; text-decoration: none; font-weight: 500;">khoi123719@gmail.com</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-bottom: 6px; line-height: 1.4;">
+                      <strong style="color: #64748b;">Website:</strong> <a href="https://ngodkhoi.vercel.app" target="_blank" style="color: #10b981; text-decoration: none; font-weight: 500;">ngodkhoi.vercel.app</a>
+                    </td>
+                  </tr>
+                </table>
+                
+                <!-- Social Media Links -->
+                <table cellpadding="0" cellspacing="0" border="0" style="margin-top: 6px;">
+                  <tr>
+                    <td style="padding-right: 12px; valign: middle;">
+                      <a href="https://www.linkedin.com/in/ngodkhoi" target="_blank" style="text-decoration: none;">
+                        <img src="https://raw.githubusercontent.com/NgoDKhoi/ngodkhoi/main/portfolio_image/linkedin_logo.jpg" alt="LinkedIn" width="20" height="20" style="border: 0; display: block; border-radius: 4px;" />
+                      </a>
+                    </td>
+                    <td style="valign: middle;">
+                      <a href="https://github.com/NgoDKhoi" target="_blank" style="text-decoration: none;">
+                        <img src="https://raw.githubusercontent.com/NgoDKhoi/ngodkhoi/main/portfolio_image/github_logo.jpg" alt="GitHub" width="20" height="20" style="border: 0; display: block; border-radius: 4px;" />
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- END OF EMAIL SIGNATURE -->
+      </div>
+
+      <!-- Copy Action Buttons -->
+      <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+        <button onclick="copySignatureRichText()" class="inline-flex items-center justify-center px-6 py-3 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white font-semibold rounded-xl transition shadow-lg shadow-emerald-500/20 border border-emerald-400/30">
+          <i class="fa-solid fa-copy mr-2"></i> Sao chép Chữ ký (Định dạng Rich Text)
+        </button>
+        <button onclick="copySignatureRawHtml()" class="inline-flex items-center justify-center px-6 py-3 bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-slate-200 font-semibold rounded-xl transition border border-slate-600">
+          <i class="fa-solid fa-code mr-2"></i> Copy mã nguồn HTML
+        </button>
+      </div>
+    </div>
+
+    <!-- Instructions Accordion -->
+    <div class="bg-slate-800 rounded-2xl border border-slate-700/80 shadow-2xl p-6 sm:p-8">
+      <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-circle-info text-emerald-400"></i> Hướng dẫn cài đặt vào Gmail
+      </h2>
+      <ol class="list-decimal list-inside text-slate-300 space-y-4 text-sm leading-relaxed">
+        <li>
+          Nhấn nút <strong class="text-emerald-400">"Sao chép Chữ ký (Định dạng Rich Text)"</strong> ở trên. Hệ thống sẽ tự động bôi dens và sao chép chữ ký kèm hình ảnh và định dạng màu sắc vào bộ nhớ đệm (clipboard).
+        </li>
+        <li>
+          Mở <a href="https://mail.google.com" target="_blank" class="text-emerald-400 hover:underline">Gmail</a> của bạn lên, nhấn biểu tượng <i class="fa-solid fa-gear"></i> ở góc trên bên phải chọn <strong class="text-white">"Xem tất cả tùy chọn cài đặt" (See all settings)</strong>.
+        </li>
+        <li>
+          Ở tab <strong class="text-white">"Chung" (General)</strong>, cuộn xuống phần <strong class="text-white">"Chữ ký" (Signature)</strong> và nhấn <strong class="text-white">"Tạo mới" (Create new)</strong>.
+        </li>
+        <li>
+          Nhấp chuột vào ô nhập văn bản chữ ký bên phải, nhấn tổ hợp phím <strong class="text-emerald-400">Ctrl + V</strong> (hoặc nhấn chuột phải chọn Paste) để dán chữ ký vào.
+        </li>
+        <li>
+          Tại phần <strong class="text-white">"Bắt đầu sử dụng chữ ký" (Signature defaults)</strong> phía dưới, chọn tên chữ ký bạn vừa tạo cho cả mục *Email mới* và *Email trả lời/chuyển tiếp*.
+        </li>
+        <li>
+          Cuộn xuống cuối trang và nhấn nút <strong class="text-emerald-400">"Lưu thay đổi" (Save Changes)</strong>.
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    // Copy rich text format (formatted HTML so users can just Ctrl+V into Gmail)
+    function copySignatureRichText() {
+      const container = document.getElementById('signature-container');
+      const range = document.createRange();
+      range.selectNode(container);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showNotification('Đã sao chép chữ ký thành công! Hãy mở Cài đặt Gmail và dán (Ctrl+V) vào ô chữ ký.', 'success');
+        } else {
+          showNotification('Có lỗi xảy ra khi tự động sao chép.', 'error');
+        }
+      } catch (err) {
+        showNotification('Trình duyệt của bạn không hỗ trợ copy tự động. Hãy bôi đen chữ ký và nhấn Ctrl+C.', 'error');
+      }
+      
+      window.getSelection().removeAllRanges();
+    }
+
+    // Copy raw HTML source code
+    function copySignatureRawHtml() {
+      const container = document.getElementById('signature-container');
+      const rawHtml = container.innerHTML.trim();
+      
+      navigator.clipboard.writeText(rawHtml).then(() => {
+        showNotification('Đã sao chép mã nguồn HTML vào bộ nhớ tạm!', 'success');
+      }).catch(err => {
+        showNotification('Không thể sao chép mã nguồn HTML.', 'error');
+      });
+    }
+
+    // Display custom alert banner
+    function showNotification(message, type) {
+      // Remove existing notification if any
+      const existing = document.getElementById('toast-notification');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.id = 'toast-notification';
+      toast.className = `fixed bottom-5 right-5 px-6 py-4 rounded-xl shadow-2xl transition duration-500 transform translate-y-0 text-sm font-medium border z-50 flex items-center gap-3 ` + 
+        (type === 'success' ? 'bg-slate-800 text-emerald-400 border-emerald-500/30' : 'bg-slate-800 text-rose-400 border-rose-500/30');
+      
+      const icon = document.createElement('i');
+      icon.className = type === 'success' ? 'fa-solid fa-circle-check text-lg' : 'fa-solid fa-circle-exclamation text-lg';
+      
+      const text = document.createElement('span');
+      text.innerText = message;
+      
+      toast.appendChild(icon);
+      toast.appendChild(text);
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 500);
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
