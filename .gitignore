@@ -1,6 +1,2 @@
 node_modules/
-src/
-compress-images.js
-tailwind.config.js
-package.json
-package-lock.json
+_build/node_modules/
