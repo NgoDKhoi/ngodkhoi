@@ -226,12 +226,12 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-white mb-12 text-center">Dự Án Tiêu Biểu</h2>
 
-            <div class="flex flex-col gap-16">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Project 1: AutoClaw - Autonomous AI Robot (NEW - AIoT Project) -->
                 <div
-                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group">
+                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col group h-full">
                     <!-- Visual -->
-                    <div class="md:w-1/2 bg-black/50 flex items-center justify-center p-12 relative overflow-hidden group/image">
+                    <div class="w-full h-64 bg-black/50 flex items-center justify-center relative overflow-hidden group/image shrink-0">
                         <!-- Background image for AutoClaw -->
                         <div
                             class="absolute inset-0 bg-[url('../images/projects/autoclaw.webp')] bg-cover bg-center opacity-100 transition duration-500">
@@ -249,7 +249,7 @@
                     </div>
 
                     <!-- Info -->
-                    <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                    <div class="p-6 flex flex-col flex-grow">
                         <div class="flex items-center gap-2 mb-3">
                             <span
                                 class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">
@@ -261,11 +261,11 @@
                             </span>
                         </div>
 
-                        <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition">AutoClaw - Autonomous AI Robot
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-primary transition">AutoClaw - AI Robot
                         </h3>
 
-                        <p class="text-slate-400 mb-6 leading-relaxed">
-                            Xe tự hành thông minh (Edge AI Robot) tích hợp điều khiển đa phương thức: thủ công (D-pad web dashboard), giọng nói tiếng Việt (Web Speech API), cử chỉ bàn tay (AI MediaPipe) xử lý trực tiếp trên GPU Client, kết hợp hệ thống phanh khẩn cấp tự động và giám sát từ xa qua Telegram Bot.
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed line-clamp-3">
+                            Xe tự hành thông minh (Edge AI Robot) tích hợp điều khiển đa phương thức: thủ công, giọng nói tiếng Việt, cử chỉ bàn tay. Xử lý trực tiếp trên GPU Client kết hợp phanh khẩn cấp tự động và Telegram Bot.
                         </p>
 
                         <div class="mb-6">
@@ -286,24 +286,23 @@
                             </div>
                         </div>
 
-                        <div class="mb-8">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Tôi đã học được và làm được những gì ?</h4>
-                            <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
-                                <li>Lập trình điều khiển nhúng trên Arduino Uno R3 điều khiển động cơ L298N và cảm biến HC-SR04.</li>
-                                <li>Phát triển lõi giám sát an toàn (Safety Reflex Engine) bằng Rust tránh vật cản chủ động ở tốc độ cao.</li>
-                                <li>Tích hợp các mô hình Edge AI để xử lý nhận diện giọng nói tiếng Việt và cử chỉ tay trên trình duyệt.</li>
-                                <li>Xây dựng hệ thống giao tiếp đa luồng (Tokio loop) đồng bộ qua Serial và gửi cảnh báo về Telegram Bot.</li>
+                        <div class="mb-6">
+                            <h4 class="text-white text-xs font-semibold mb-2 uppercase tracking-wide opacity-80">Nổi bật</h4>
+                            <ul class="text-slate-400 text-sm space-y-1 list-disc list-inside">
+                                <li>Lõi giám sát an toàn (Rust)</li>
+                                <li>Nhận diện giọng nói & cử chỉ (Edge AI)</li>
+                                <li>Giao tiếp đa luồng & Bot Telegram</li>
                             </ul>
                         </div>
 
-                        <div class="flex space-x-4">
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 mt-auto">
                             <a href="https://github.com/NgoDKhoi/NT131.Q21-Group-9#readme" target="_blank"
-                                class="flex-1 text-center px-6 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg transition font-medium shadow-lg shadow-primary/20">
-                                <i class="fas fa-book-open mr-2"></i> Tài Liệu (README)
+                                class="flex-1 text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-lg shadow-primary/20">
+                                <i class="fas fa-book-open mr-2"></i> Tài Liệu
                             </a>
                             <a href="https://github.com/NgoDKhoi/NT131.Q21-Group-9.git" target="_blank"
-                                class="flex-1 text-center px-6 py-3 border border-slate-600 hover:border-white text-white rounded-lg transition font-medium">
-                                <i class="fab fa-github mr-2"></i> Source Code
+                                class="flex-1 text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium">
+                                <i class="fab fa-github mr-2"></i> Source
                             </a>
                         </div>
                     </div>
@@ -311,9 +310,9 @@
 
                 <!-- Project 2: Tetris Game (NEW - Added before Kittens) -->
                 <div
-                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group">
+                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col group h-full">
                     <!-- Visual -->
-                    <div class="md:w-1/2 bg-black/50 flex items-center justify-center p-12 relative overflow-hidden group/image">
+                    <div class="w-full h-64 bg-black/50 flex items-center justify-center relative overflow-hidden group/image shrink-0">
                         <!-- Updated background image path, added bg-cover/center and adjusted opacity -->
                         <div
                             class="absolute inset-0 bg-[url('../images/projects/tetris.webp')] bg-cover bg-center opacity-100 transition duration-500">
@@ -331,7 +330,7 @@
                     </div>
 
                     <!-- Info -->
-                    <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                    <div class="p-6 flex flex-col flex-grow">
                         <div class="flex items-center gap-2 mb-3">
                             <span
                                 class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">
@@ -343,13 +342,11 @@
                             </span>
                         </div>
 
-                        <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition">Tetris Game
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-primary transition">Tetris Game
                         </h3>
 
-                        <p class="text-slate-400 mb-6 leading-relaxed">
-                            Tái hiện tựa game xếp gạch kinh điển bằng <strong>Unity Engine</strong>. Dự án tập trung vào
-                            việc xử lý logic Grid System, thuật toán xoay khối gạch và quản lý trạng thái game (State
-                            Management).
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed line-clamp-3">
+                            Tái hiện tựa game xếp gạch kinh điển bằng Unity Engine. Tập trung xử lý logic Grid System, thuật toán xoay khối gạch và quản lý trạng thái game.
                         </p>
 
                         <div class="mb-6">
@@ -363,24 +360,23 @@
                             </div>
                         </div>
 
-                        <div class="mb-8">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Tôi đã
-                                học được và làm được những gì ?</h4>
-                            <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
-                                <li>Xây dựng hệ thống Grid để quản lý các khối gạch và xử lý va chạm.</li>
-                                <li>Lập trình logic sinh khối gạch ngẫu nhiên (Spawner) và thuật toán xóa hàng.</li>
-                                <li>Thiết kế UI cơ bản với Unity, deploy dự án lên web</li>
+                        <div class="mb-6">
+                            <h4 class="text-white text-xs font-semibold mb-2 uppercase tracking-wide opacity-80">Nổi bật</h4>
+                            <ul class="text-slate-400 text-sm space-y-1 list-disc list-inside">
+                                <li>Hệ thống Grid & xử lý va chạm</li>
+                                <li>Logic Spawner & xóa hàng</li>
+                                <li>Thiết kế UI cơ bản</li>
                             </ul>
                         </div>
 
-                        <div class="flex space-x-4">
-                            <a href="https://ngodkhoi.itch.io/tetris-game"
-                                class="flex-1 text-center px-6 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg transition font-medium shadow-lg shadow-primary/20">
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 mt-auto">
+                            <a href="https://ngodkhoi.itch.io/tetris-game" target="_blank"
+                                class="flex-1 text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-lg shadow-primary/20">
                                 <i class="fas fa-play mr-2"></i> Demo
                             </a>
-                            <a href="https://github.com/NgoDKhoi/Tetris-Game.git"
-                                class="flex-1 text-center px-6 py-3 border border-slate-600 hover:border-white text-white rounded-lg transition font-medium">
-                                <i class="fab fa-github mr-2"></i> Source Code
+                            <a href="https://github.com/NgoDKhoi/Tetris-Game.git" target="_blank"
+                                class="flex-1 text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium">
+                                <i class="fab fa-github mr-2"></i> Source
                             </a>
                         </div>
                     </div>
@@ -388,9 +384,9 @@
 
                 <!-- Project 3: Exploding Kittens -->
                 <div
-                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group">
+                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col group h-full">
                     <!-- Project Visual -->
-                    <div class="md:w-1/2 bg-black/50 flex items-center justify-center p-12 relative overflow-hidden group/image">
+                    <div class="w-full h-64 bg-black/50 flex items-center justify-center relative overflow-hidden group/image shrink-0">
                         <div class="absolute inset-0 bg-[url('../images/projects/meo.webp')] bg-cover bg-center opacity-100 transition duration-500">
                         </div>
                         <div
@@ -404,7 +400,7 @@
                     </div>
 
                     <!-- Project Info -->
-                    <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                    <div class="p-6 flex flex-col flex-grow">
                         <div class="flex items-center gap-2 mb-3">
                             <span
                                 class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">
@@ -416,13 +412,10 @@
                             </span>
                         </div>
 
-                        <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition">Exploding
-                            Kittens Game App</h3>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-primary transition">Exploding Kittens Game</h3>
 
-                        <p class="text-slate-400 mb-6 leading-relaxed">
-                            Một game thẻ bài chiến thuật dựa trên trò chơi nổi tiếng Exploding Kittens (mèo nổ). Là đồ
-                            án môn lập trình mạng căn bản, có các tính năng log in, sign up được xây từ firebase, chơi
-                            với bạn bè thông qua mạng và game được dựng bởi Unity Engine.
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed line-clamp-3">
+                            Game thẻ bài chiến thuật Multiplayer (Mèo nổ) xây dựng trên Unity Engine và Firebase. Hỗ trợ hệ thống đăng nhập, tìm kiếm phòng chơi và thi đấu trực tuyến với bạn bè.
                         </p>
 
                         <div class="mb-6">
@@ -439,28 +432,30 @@
                             </div>
                         </div>
 
-                        <!-- Thêm phần đóng góp của tôi -->
+                        <div class="mb-6">
+                            <h4 class="text-white text-xs font-semibold mb-2 uppercase tracking-wide opacity-80">Nổi bật</h4>
+                            <ul class="text-slate-400 text-sm space-y-1 list-disc list-inside">
+                                <li>Thiết kế UI/UX & luồng trò chơi</li>
+                                <li>Lập trình logic trận đấu (cơ chế bài)</li>
+                                <li>Tích hợp Firebase Multiplayer</li>
+                            </ul>
+                        </div>
+
                         <div class="mb-8">
                             <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Đóng
                                 góp
                                 của tôi</h4>
                             <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
                                 <li>Thiết kế UI, logic, luồng hoạt động trận đấu.</li>
-                                <li>Code logic trận đấu (khởi tạo bộ bài, logic chia bài, quản lý lượt, rút bài và xử
-                                    lý...)
-                                    bằng C#.</li>
+                                <li>Code logic trận đấu (khởi tạo bộ bài, logic chia bài, quản lý lượt, rút bài và xử lý...) bằng C#.</li>
                                 <li>Tạo và code tính năng cho các button trong trận đấu.</li>
                             </ul>
                         </div>
 
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/NgoDKhoi/Meo_Boom/blob/main/README.md"
-                                class="flex-1 text-center px-6 py-3 bg-primary hover:bg-primaryHover text-white rounded-lg transition font-medium shadow-lg shadow-primary/20">
-                                <i class="fas fa-play mr-2"></i> Demo
-                            </a>
-                            <a href="https://github.com/NgoDKhoi/Meo_Boom" target="_blank"
-                                class="flex-1 text-center px-6 py-3 border border-slate-600 hover:border-white text-white rounded-lg transition font-medium">
-                                <i class="fab fa-github mr-2"></i> Source Code
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 mt-auto">
+                            <a href="https://github.com/NgoDKhoi/M-o-N-" target="_blank"
+                                class="flex-1 text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium">
+                                <i class="fab fa-github mr-2"></i> Source
                             </a>
                         </div>
                     </div>
