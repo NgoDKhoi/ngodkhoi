@@ -2,26 +2,23 @@
 <html lang="vi" class="scroll-smooth">
 
 <head>
-    <!-- Google Analytics (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9570SBYWV"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        const allowedDomains = ['ngodkhoi.vercel.app', 'localhost', '127.0.0.1'];
-        if (allowedDomains.includes(window.location.hostname)) {
-            gtag('config', 'G-B9570SBYWV');
-        }
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DKhoi - Portfolio</title>
     <link rel="icon" href="portfolio_image/favicon.png" type="image/png">
 
+    <!-- Preconnect to external domains (giảm DNS lookup + TLS handshake) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts (non-blocking link thay vì @import) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CSS (~90KB thay vì JS ~1.4MB) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -43,8 +40,6 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -553,6 +548,20 @@
             </p>
         </div>
     </footer>
+
+    <!-- Google Analytics (đặt cuối body để không chặn render) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9570SBYWV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        const allowedDomains = ['ngodkhoi.vercel.app', 'localhost', '127.0.0.1'];
+        if (allowedDomains.includes(window.location.hostname)) {
+            gtag('config', 'G-B9570SBYWV');
+        }
+    </script>
+
 </body>
 
 </html>
