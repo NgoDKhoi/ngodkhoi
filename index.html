@@ -9,7 +9,10 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-B9570SBYWV');
+        const allowedDomains = ['ngodkhoi.vercel.app', 'localhost', '127.0.0.1'];
+        if (allowedDomains.includes(window.location.hostname)) {
+            gtag('config', 'G-B9570SBYWV');
+        }
     </script>
 
     <meta charset="UTF-8">
