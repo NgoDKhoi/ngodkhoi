@@ -1,8 +1,12 @@
 {
   "headers": [
     {
-      "source": "/Fruit-Slash/Build/(.*)\\.br",
+      "source": "/Fruit-Slash/Build/MHX.wasm.br",
       "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        },
         {
           "key": "Content-Encoding",
           "value": "br"
@@ -10,20 +14,28 @@
       ]
     },
     {
-      "source": "/Fruit-Slash/Build/(.*)\\.wasm\\.br",
+      "source": "/Fruit-Slash/Build/MHX.data.br",
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/wasm"
+          "value": "application/octet-stream"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "br"
         }
       ]
     },
     {
-      "source": "/Fruit-Slash/Build/(.*)\\.js\\.br",
+      "source": "/Fruit-Slash/Build/MHX.framework.js.br",
       "headers": [
         {
           "key": "Content-Type",
           "value": "application/javascript"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "br"
         }
       ]
     }
