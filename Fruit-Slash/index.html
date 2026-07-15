@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Server-Defender-Game</title>
+    <style>
+      body { margin: 0; padding: 0; overflow: hidden; background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; }
+      #unity-canvas { width: 100%; height: 100%; object-fit: contain; }
+      #video-element {
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+        width: 180px;
+        height: 135px;
+        border-radius: 12px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        object-fit: cover;
+        z-index: 100;
+        opacity: 0; /* Mặc định giấu đi ở Menu */
+        pointer-events: none; /* Không cản trở click chuột */
+        transform: scaleX(-1); /* Mirror để tự nhiên hơn khi nhìn */
+        transition: opacity 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The webcam video stream -->
+    <video id="video-element" autoplay playsinline></video>
+      <!-- Canvas overlay for hand landmarks -->
+      <canvas id="landmark-canvas" width="640" height="480" style="position: fixed; bottom: 16px; right: 16px; width: 180px; height: 135px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.5); pointer-events: none; z-index: 101; opacity: 0; transition: opacity 0.3s ease;"></canvas>
+    
+    <!-- Unity WebGL Canvas -->
+    <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+    
+    <!-- MediaPipe Hands — loaded on Main Thread (WASM inference runs off-thread internally) -->
+    <script src="mediapipe/hands.js"></script>
+
+    <script src="Build/MHX.loader.js"></script>
+    <script>
+      var unityInstance = null;
+      var latestHandData = ""; // Global variable: raw string read by Unity via .jslib
+
+      // Function to be called from Unity (.jslib)
+      window.GetHandDataString = function() {
+          return latestHandData;
+      };
+
+      // Function to show/hide camera (opacity 1 = đặc hoàn toàn, 0 = tàng hình)
+      window.SetCameraVisible = function(isVisible) {
+          const video = document.getElementById('video-element');
+          const canvas = document.getElementById('landmark-canvas');
+          if (video) video.style.opacity = isVisible ? "1" : "0";
+          if (canvas) canvas.style.opacity = isVisible ? "1" : "0";
+      };
+
+      // Unity Initialization
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/MHX.data.br",
+        frameworkUrl: "Build/MHX.framework.js.br",
+        codeUrl: "Build/MHX.wasm.br",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Server-Defender-Game",
+        productVersion: "1.0",
+      }).then((instance) => {
+        unityInstance = instance;
+        startCameraAndMediaPipe();
+      }).catch((message) => {
+        alert(message);
+      });
+
+      function startCameraAndMediaPipe() {
+          const videoElement = document.getElementById('video-element');
+
+          // 1. Initialize MediaPipe Hands on Main Thread
+          //    Heavy ML inference runs in WASM internally — JS overhead is minimal (<1ms/frame)
+          const hands = new Hands({
+              locateFile: (file) => {
+                  return `mediapipe/${file}`;
+              }
+          });
+
+          hands.setOptions({
+              maxNumHands: 1, // Fix: Chỉ theo dõi 1 tay để tránh hoán đổi ID gây nhảy con trỏ
+              modelComplexity: 0, // Lite model for max WebGL performance
+              minDetectionConfidence: 0.5,
+              minTrackingConfidence: 0.5
+          });
+
+          hands.onResults((results) => {
+            // Update latestHandData (same as before)
+            if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+              const hand = results.multiHandLandmarks[0];
+              const indexTip = hand[8];
+              const thumbTip = hand[4];
+
+              const dx = indexTip.x - thumbTip.x;
+              const dy = indexTip.y - thumbTip.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              const isPinching = (dist < 0.05) ? "1" : "0";
+
+              latestHandData = `${indexTip.x.toFixed(4)},${indexTip.y.toFixed(4)},${isPinching}`;
+            } else {
+              latestHandData = "";
+            }
+
+            // ---- Draw landmarks on PiP canvas ----
+            const canvas = document.getElementById('landmark-canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+              const hand = results.multiHandLandmarks[0];
+              // Connections (MediaPipe hand connections)
+              const connections = [
+                [0,1],[1,2],[2,3],[3,4], // thumb
+                [0,5],[5,6],[6,7],[7,8], // index
+                [5,9],[9,10],[10,11],[11,12], // middle
+                [9,13],[13,14],[14,15],[15,16], // ring
+                [13,17],[17,18],[18,19],[19,20], // pinky
+                [0,17]
+              ];
+              connections.forEach(pair => {
+                const a = hand[pair[0]];
+                const b = hand[pair[1]];
+                const drawAX = (1 - a.x) * canvas.width;
+                const drawAY = a.y * canvas.height;
+                const drawBX = (1 - b.x) * canvas.width;
+                const drawBY = b.y * canvas.height;
+                ctx.beginPath();
+                ctx.moveTo(drawAX, drawAY);
+                ctx.lineTo(drawBX, drawBY);
+                ctx.strokeStyle = 'rgba(0,255,0,0.6)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+              });
+              // Draw each landmark as a small circle (mirrored X)
+              hand.forEach(lm => {
+                const drawX = (1 - lm.x) * canvas.width; // mirror X
+                const drawY = lm.y * canvas.height;
+                ctx.beginPath();
+                ctx.arc(drawX, drawY, 3, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,0,0,0.9)';
+                ctx.fill();
+              });
+            }
+          });
+
+
+          // 2. Request Webcam Access
+          navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480, frameRate: { ideal: 30 } } })
+          .then((stream) => {
+              videoElement.srcObject = stream;
+              videoElement.onloadedmetadata = () => {
+                  videoElement.play();
+                  // Start processing loop — throttled to ~30fps to minimize main thread impact
+                  processFrame();
+              };
+          })
+          .catch((err) => {
+              console.error("Camera error:", err);
+              alert("Please allow camera access to play Server Defender!");
+          });
+
+          const FRAME_INTERVAL_MS = 33; // ~30fps capture rate (Unity still renders at 60fps)
+
+          async function processFrame() {
+              if (!videoElement.paused && !videoElement.ended) {
+                  try {
+                      await hands.send({ image: videoElement });
+                  } catch (err) {
+                      console.error("MediaPipe Processing Error:", err);
+                  }
+              }
+              setTimeout(processFrame, FRAME_INTERVAL_MS);
+          }
+      }
+    </script>
+  </body>
+</html>
