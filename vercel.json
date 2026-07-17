@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/Fruit-Slash",
-      "destination": "https://fruit-slash-game.vercel.app/"
+      "destination": "https://fruit-slash-game-tau.vercel.app/"
     },
     {
       "source": "/Fruit-Slash/(.*)",
-      "destination": "https://fruit-slash-game.vercel.app/$1"
+      "destination": "https://fruit-slash-game-tau.vercel.app/$1"
     }
   ]
 }
