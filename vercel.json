@@ -1,43 +1,12 @@
 {
-  "headers": [
+  "rewrites": [
     {
-      "source": "/Fruit-Slash/Build/MHX.wasm.br",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/wasm"
-        },
-        {
-          "key": "Content-Encoding",
-          "value": "br"
-        }
-      ]
+      "source": "/Fruit-Slash",
+      "destination": "https://fruit-slash-game.vercel.app/"
     },
     {
-      "source": "/Fruit-Slash/Build/MHX.data.br",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/octet-stream"
-        },
-        {
-          "key": "Content-Encoding",
-          "value": "br"
-        }
-      ]
-    },
-    {
-      "source": "/Fruit-Slash/Build/MHX.framework.js.br",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        },
-        {
-          "key": "Content-Encoding",
-          "value": "br"
-        }
-      ]
+      "source": "/Fruit-Slash/(.*)",
+      "destination": "https://fruit-slash-game.vercel.app/$1"
     }
   ]
 }
