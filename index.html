@@ -447,6 +447,74 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Project 4: Fruit-Slash (Server-Defender) -->
+                <div
+                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row-reverse group">
+                    <!-- Project Visual -->
+                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/50 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
+                        <div class="absolute inset-0 bg-[url('../images/projects/fruit-slash.png')] bg-cover bg-center opacity-100 transition duration-500">
+                        </div>
+                        <div
+                            class="absolute top-0 right-0 w-full h-full bg-black/0 group-hover/image:bg-black/80 transition duration-500 z-10">
+                        </div>
+
+                        <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
+                            <i class="fas fa-hand-sparkles text-8xl text-primary animate-pulse-slow"></i>
+                            <i class="fas fa-gamepad text-6xl text-white absolute -bottom-2 -right-4 drop-shadow-lg"></i>
+                        </div>
+                    </div>
+
+                    <!-- Project Info -->
+                    <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span
+                                class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">
+                                Game / AI
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded uppercase tracking-wider">
+                                Solo
+                            </span>
+                        </div>
+
+                        <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition">Server Defender (Fruit-Slash)</h3>
+
+                        <p class="text-slate-400 mb-6 leading-relaxed">
+                            Tựa game WebGL bảo vệ máy chủ kết hợp Computer Vision. Trò chơi cho phép người chơi sử dụng chính bàn tay thực tế của mình trước Webcam để chém các mục tiêu thông qua công nghệ nhận diện cử chỉ thời gian thực.
+                        </p>
+
+                        <div class="mb-6">
+                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Công nghệ</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">Unity (WebGL)</span>
+                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">C#</span>
+                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">MediaPipe (Edge AI)</span>
+                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">JavaScript</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Tính năng nổi bật</h4>
+                            <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
+                                <li><strong>Tích hợp MediaPipe:</strong> Nhận diện và theo dõi tọa độ bàn tay (Hand Tracking) trực tiếp trên trình duyệt với độ trễ siêu thấp.</li>
+                                <li><strong>Xử lý cử chỉ (Gesture Recognition):</strong> Tính toán khoảng cách tọa độ để nhận diện thao tác "Pinch" (nhón/chém) thay cho thao tác click chuột truyền thống.</li>
+                                <li><strong>Unity-Web Bridge:</strong> Sử dụng file <code>.jslib</code> để đồng bộ hóa dữ liệu luồng ML từ JavaScript vào game loop của Unity theo thời gian thực.</li>
+                            </ul>
+                        </div>
+
+                        <div class="flex space-x-4 mt-auto">
+                            <a href="/Fruit-Slash/index.html" target="_blank"
+                                class="flex-1 text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-lg shadow-primary/20">
+                                <i class="fas fa-play mr-2"></i> Play
+                            </a>
+                            <a href="https://github.com/NgoDKhoi" target="_blank"
+                                class="flex-1 text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium">
+                                <i class="fab fa-github mr-2"></i> Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
