@@ -423,7 +423,7 @@ assert(allVisible === 4, `Filter "all": all 4 projects visible (found ${allVisib
 
 // 5.4 CV PDF Links
 const cvLinkMatches = (htmlContent.match(/href="files\/CV_NgoDinhKhoi\.pdf"/g) || []).length;
-assert(cvLinkMatches >= 3, `CV PDF download links present in Navigation, Hero, and Contact (${cvLinkMatches} links found)`);
+assert(cvLinkMatches >= 1, `CV PDF download link present in Hero section (${cvLinkMatches} link found)`);
 
 // ====================================================================
 // TEST 6: Console & Runtime Errors Validation
@@ -452,7 +452,7 @@ assert(consoleErrors.length === 0, `Total console errors recorded during all ope
 console.log('\n[TEST 7] Checking visual hierarchy & motion reduction (R2)...');
 
 const avatarStart = htmlContent.indexOf('<!-- Right Column: Avatar -->');
-const avatarEnd = htmlContent.indexOf('<!-- Scroll down indicator -->');
+const avatarEnd = htmlContent.indexOf('<!-- About Section -->');
 const avatarMarkup = htmlContent.substring(avatarStart, avatarEnd);
 
 assert(!avatarMarkup.includes('animate-bounce'), 'Avatar badges free of distracting continuous animate-bounce');

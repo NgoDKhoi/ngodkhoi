@@ -340,7 +340,7 @@ def run_builtin_engine():
     assert_check("data-filter" in html and "card.style.display" in html,
                  "Category filter tab switching logic active (all, aiot, game)")
     cv_links = len(re.findall(r'href="files/CV_NgoDinhKhoi\.pdf"', html))
-    assert_check(cv_links >= 3, f"CV PDF download links present ({cv_links} links found)")
+    assert_check(cv_links >= 1, f"CV PDF download link present ({cv_links} link found)")
 
     # 6. Console & Runtime Errors
     print("\n[TEST 6] Checking console & runtime errors...")
@@ -350,7 +350,7 @@ def run_builtin_engine():
 
     # 7. Visual Hierarchy & Motion Reduction
     print("\n[TEST 7] Checking visual hierarchy & motion reduction (R2)...")
-    avatar_match = re.search(r"<!-- Right Column: Avatar -->([\s\S]*?)<!-- Scroll down indicator -->", html)
+    avatar_match = re.search(r"<!-- Right Column: Avatar -->([\s\S]*?)</section>", html)
     avatar_html = avatar_match.group(1) if avatar_match else ""
     assert_check("animate-bounce" not in avatar_html and "animate-pulse" not in avatar_html,
                  "Avatar badges free of continuous bounce/pulse motion")

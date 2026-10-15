@@ -81,6 +81,19 @@
             border-color: #10b981;
         }
 
+        /* Contact GitHub card hover with white circle and glow */
+        .contact-github:hover {
+            border-color: #ffffff !important;
+        }
+        .contact-github:hover .github-icon-circle {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.45) !important;
+        }
+        .contact-github:hover .github-text {
+            color: #ffffff !important;
+        }
+
         /* Project background thumbnails */
         .thumb-autoclaw {
             background-image: url('images/projects/autoclaw.webp');
@@ -390,11 +403,6 @@
                     <a href="#about" class="text-slate-300 hover:text-primary transition font-medium text-sm">Giới thiệu</a>
                     <a href="#skills" class="text-slate-300 hover:text-primary transition font-medium text-sm">Kỹ năng</a>
                     <a href="#projects" class="text-slate-300 hover:text-primary transition font-medium text-sm">Dự án</a>
-                    <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer"
-                        class="text-slate-300 hover:text-primary transition font-medium text-sm inline-flex items-center gap-1.5"
-                        title="Tải CV định dạng PDF">
-                        <i class="fas fa-file-pdf text-rose-400"></i> Tải CV
-                    </a>
                     <a href="#contact" class="border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-lg font-medium text-sm transition duration-300 shadow-sm shadow-primary/20">Liên hệ</a>
                 </div>
 
@@ -412,9 +420,6 @@
             <a href="#about" class="mobile-nav-link min-h-[44px] flex items-center px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/60 transition">Giới thiệu</a>
             <a href="#skills" class="mobile-nav-link min-h-[44px] flex items-center px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/60 transition">Kỹ năng</a>
             <a href="#projects" class="mobile-nav-link min-h-[44px] flex items-center px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/60 transition">Dự án</a>
-            <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer" class="mobile-nav-link min-h-[44px] flex items-center px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/60 transition">
-                <i class="fas fa-file-pdf text-rose-400 mr-2.5"></i> Tải CV (PDF)
-            </a>
             <a href="#contact" class="mobile-nav-link min-h-[44px] flex items-center justify-center px-4 py-2.5 rounded-lg text-base font-medium text-primary border border-primary/40 hover:bg-primary hover:text-white transition">Liên hệ</a>
         </div>
     </nav>
@@ -494,12 +499,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Scroll down indicator -->
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center pointer-events-none text-slate-500 text-xs gap-1 animate-bounce">
-            <span class="tracking-widest uppercase text-[10px]">Khám phá</span>
-            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
@@ -942,12 +941,12 @@
 
                 <!-- GitHub -->
                 <a href="https://github.com/NgoDKhoi" target="_blank" rel="noopener noreferrer"
-                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-white transition duration-300 flex flex-col items-center justify-center">
-                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 group-hover:bg-white group-hover:text-slate-900 transition">
+                    class="contact-github group bg-card p-6 rounded-2xl border border-slate-700/80 transition duration-300 flex flex-col items-center justify-center">
+                    <div class="github-icon-circle w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 transition duration-300">
                         <i class="fab fa-github text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">GitHub</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm group-hover:text-white transition">github.com/NgoDKhoi</p>
+                    <p class="github-text text-slate-400 text-xs sm:text-sm transition duration-300">github.com/NgoDKhoi</p>
                 </a>
 
                 <!-- Facebook -->
@@ -958,18 +957,6 @@
                     </div>
                     <h3 class="text-white font-medium mb-1">Facebook</h3>
                     <p class="text-slate-400 text-xs sm:text-sm group-hover:text-[#1877f2] transition">Ngô Đình Khôi</p>
-                </a>
-            </div>
-
-            <!-- Resume Download Box -->
-            <div class="mt-10 p-5 sm:p-6 bg-card/60 border border-slate-700/80 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 max-w-3xl mx-auto">
-                <div class="text-center sm:text-left">
-                    <h4 class="text-white font-semibold text-base mb-1">Cần xem hồ sơ chi tiết?</h4>
-                    <p class="text-slate-400 text-xs sm:text-sm">Tải bản CV định dạng PDF tóm tắt lộ trình học tập, dự án và kỹ năng kỹ thuật.</p>
-                </div>
-                <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer"
-                    class="contact-cv-btn touch-target w-full sm:w-auto shrink-0 bg-primary hover:bg-primaryHover text-white min-h-[44px] px-6 py-3 rounded-xl font-medium text-sm transition shadow-md shadow-primary/25 inline-flex items-center justify-center gap-2">
-                    <i class="fas fa-file-pdf"></i> Tải CV (PDF)
                 </a>
             </div>
         </div>
