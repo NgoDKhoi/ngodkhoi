@@ -81,7 +81,31 @@
             border-color: #10b981;
         }
 
-        /* Contact GitHub card hover with white circle and glow */
+        /* Contact cards hover with brand circles and glow */
+        .contact-email:hover {
+            border-color: #10b981 !important;
+        }
+        .contact-email:hover .email-icon-circle {
+            background-color: #10b981 !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5) !important;
+        }
+        .contact-email:hover .email-text {
+            color: #10b981 !important;
+        }
+
+        .contact-linkedin:hover {
+            border-color: #0077b5 !important;
+        }
+        .contact-linkedin:hover .linkedin-icon-circle {
+            background-color: #0077b5 !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 20px rgba(0, 119, 181, 0.55) !important;
+        }
+        .contact-linkedin:hover .linkedin-text {
+            color: #0077b5 !important;
+        }
+
         .contact-github:hover {
             border-color: #ffffff !important;
         }
@@ -92,6 +116,18 @@
         }
         .contact-github:hover .github-text {
             color: #ffffff !important;
+        }
+
+        .contact-facebook:hover {
+            border-color: #1877f2 !important;
+        }
+        .contact-facebook:hover .facebook-icon-circle {
+            background-color: #1877f2 !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 20px rgba(24, 119, 242, 0.55) !important;
+        }
+        .contact-facebook:hover .facebook-text {
+            color: #1877f2 !important;
         }
 
         /* Project background thumbnails */
@@ -435,7 +471,7 @@
             <div class="w-full md:w-1/2 text-center md:text-left">
                 <p class="text-primary font-mono text-sm uppercase tracking-widest mb-2">Hello world, I'm</p>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-3 tracking-tight">
-                    Ngô Đình Khôi
+                    Ngo Dinh Khoi
                 </h1>
                 <!-- Subtitle -->
                 <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 text-slate-400">
@@ -497,7 +533,7 @@
     <section id="about" class="py-20 bg-card/20 border-y border-slate-800/60">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-white mb-6 inline-block relative">
-                Về Tôi
+                About me
                 <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary rounded-full"></span>
             </h2>
             <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-3xl mx-auto">
@@ -888,22 +924,22 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Email -->
                 <a href="mailto:Khoi123719@gmail.com"
-                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-primary transition duration-300 flex flex-col items-center justify-center">
-                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 group-hover:bg-primary group-hover:text-white transition">
+                    class="contact-email group bg-card p-6 rounded-2xl border border-slate-700/80 transition duration-300 flex flex-col items-center justify-center">
+                    <div class="email-icon-circle w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 transition duration-300">
                         <i class="fas fa-envelope text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">Email</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm group-hover:text-primary transition truncate max-w-full">Khoi123719@gmail.com</p>
+                    <p class="email-text text-slate-400 text-xs sm:text-sm transition duration-300 truncate max-w-full">Khoi123719@gmail.com</p>
                 </a>
 
                 <!-- LinkedIn -->
                 <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank" rel="noopener noreferrer"
-                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-[#0077b5] transition duration-300 flex flex-col items-center justify-center">
-                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 group-hover:bg-[#0077b5] group-hover:text-white transition">
+                    class="contact-linkedin group bg-card p-6 rounded-2xl border border-slate-700/80 transition duration-300 flex flex-col items-center justify-center">
+                    <div class="linkedin-icon-circle w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 transition duration-300">
                         <i class="fab fa-linkedin-in text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">LinkedIn</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm group-hover:text-[#0077b5] transition">in/ngodkhoi</p>
+                    <p class="linkedin-text text-slate-400 text-xs sm:text-sm transition duration-300">in/ngodkhoi</p>
                 </a>
 
                 <!-- GitHub -->
@@ -918,12 +954,12 @@
 
                 <!-- Facebook -->
                 <a href="https://facebook.com/ngo.d.khoi.2024" target="_blank" rel="noopener noreferrer"
-                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-[#1877f2] transition duration-300 flex flex-col items-center justify-center">
-                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 group-hover:bg-[#1877f2] group-hover:text-white transition">
+                    class="contact-facebook group bg-card p-6 rounded-2xl border border-slate-700/80 transition duration-300 flex flex-col items-center justify-center">
+                    <div class="facebook-icon-circle w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 transition duration-300">
                         <i class="fab fa-facebook-f text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">Facebook</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm group-hover:text-[#1877f2] transition">Ngô Đình Khôi</p>
+                    <p class="facebook-text text-slate-400 text-xs sm:text-sm transition duration-300">Ngô Đình Khôi</p>
                 </a>
             </div>
         </div>
