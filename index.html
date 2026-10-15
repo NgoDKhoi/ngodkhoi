@@ -4,8 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngô Đình Khôi - Portfolio</title>
+    <title>Ngô Đình Khôi | Software & AIoT Developer Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio của Ngô Đình Khôi - Sinh viên Mạng máy tính & Truyền thông dữ liệu UIT (ĐHQG TP.HCM). Lập trình hệ thống, Edge AI, Robotics (AutoClaw), Computer Vision và Game Development.">
+    <meta name="keywords" content="Ngô Đình Khôi, Ngo Dinh Khoi, AIoT, Embedded, Edge AI, Robotics, Rust, C++, UIT, MediaPipe, Game Developer, Portfolio">
+    <meta name="author" content="Ngô Đình Khôi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ngodkhoi.vercel.app/">
     <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ngodkhoi.vercel.app/">
+    <meta property="og:title" content="Ngô Đình Khôi | Software & AIoT Developer Portfolio">
+    <meta property="og:description" content="Khám phá các dự án Edge AI, Robotics (AutoClaw), Computer Vision và Game WebGL của Ngô Đình Khôi (UIT).">
+    <meta property="og:image" content="https://ngodkhoi.vercel.app/images/avatar.webp">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ngodkhoi.vercel.app/">
+    <meta name="twitter:title" content="Ngô Đình Khôi | Software & AIoT Developer Portfolio">
+    <meta name="twitter:description" content="Khám phá các dự án Edge AI, Robotics (AutoClaw), Computer Vision và Game WebGL của Ngô Đình Khôi (UIT).">
+    <meta name="twitter:image" content="https://ngodkhoi.vercel.app/images/avatar.webp">
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +40,7 @@
 
     <!-- TailwindCSS (pre-built) -->
     <link rel="stylesheet" href="css/style.css">
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -33,7 +55,11 @@
 
         /* Hiệu ứng Glow nhẹ */
         .glow-effect {
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+        }
+
+        .featured-glow {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.25), 0 0 15px rgba(245, 158, 11, 0.2);
         }
 
         /* Tab filter active */
@@ -41,6 +67,20 @@
             background-color: #10b981;
             color: #ffffff;
             border-color: #10b981;
+        }
+
+        /* Project background thumbnails */
+        .thumb-autoclaw {
+            background-image: url('images/projects/autoclaw.webp');
+        }
+        .thumb-fruit-slash {
+            background-image: url('images/projects/fruit-slash.webp');
+        }
+        .thumb-meo {
+            background-image: url('images/projects/meo.webp');
+        }
+        .thumb-tetris {
+            background-image: url('images/projects/tetris.webp');
         }
     </style>
 </head>
@@ -57,10 +97,15 @@
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden md:flex items-center space-x-7">
                     <a href="#about" class="text-slate-300 hover:text-primary transition font-medium text-sm">Giới thiệu</a>
                     <a href="#skills" class="text-slate-300 hover:text-primary transition font-medium text-sm">Kỹ năng</a>
                     <a href="#projects" class="text-slate-300 hover:text-primary transition font-medium text-sm">Dự án</a>
+                    <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer"
+                        class="text-slate-300 hover:text-primary transition font-medium text-sm inline-flex items-center gap-1.5"
+                        title="Tải CV định dạng PDF">
+                        <i class="fas fa-file-pdf text-rose-400"></i> Tải CV
+                    </a>
                     <a href="#contact" class="border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-lg font-medium text-sm transition duration-300 shadow-sm shadow-primary/20">Liên hệ</a>
                 </div>
 
@@ -78,12 +123,15 @@
             <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">Giới thiệu</a>
             <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">Kỹ năng</a>
             <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">Dự án</a>
+            <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">
+                <i class="fas fa-file-pdf text-rose-400 mr-2"></i> Tải CV (PDF)
+            </a>
             <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-primary border border-primary/40 text-center hover:bg-primary hover:text-white">Liên hệ</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden">
+    <section class="min-h-screen flex items-center justify-center pt-24 pb-16 relative overflow-hidden">
         <!-- Background decoration glow -->
         <div class="absolute top-20 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
         <div class="absolute bottom-16 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
@@ -91,8 +139,17 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center gap-12">
             <!-- Left Column: Intro -->
             <div class="w-full md:w-1/2 text-center md:text-left">
-                <p class="text-primary font-mono text-sm uppercase tracking-widest mb-3">Hello world, I'm</p>
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold mb-4 backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span>Sẵn sàng cho cơ hội Thực tập / Intern 2026 (AIoT & Embedded)</span>
+                </div>
+
+                <p class="text-primary font-mono text-sm uppercase tracking-widest mb-2">Xin chào, tôi là</p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-3 tracking-tight">
                     Ngô Đình Khôi
                 </h1>
                 <!-- Subtitle -->
@@ -105,18 +162,23 @@
                 </p>
 
                 <!-- Actions -->
-                <div class="flex flex-wrap justify-center md:justify-start items-center gap-4">
+                <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
                     <a href="#projects"
-                        class="bg-primary hover:bg-primaryHover text-white px-7 py-3 rounded-xl font-medium transition shadow-lg shadow-primary/25 inline-flex items-center gap-2">
+                        class="bg-primary hover:bg-primaryHover text-white px-6 py-3 rounded-xl font-medium transition shadow-lg shadow-primary/25 inline-flex items-center gap-2 text-sm sm:text-base">
                         <i class="fas fa-folder-open text-sm"></i> Xem Dự Án
                     </a>
+                    <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer"
+                        class="border border-primary/80 hover:border-primary text-primary hover:bg-primary hover:text-white px-5 py-3 rounded-xl font-medium transition inline-flex items-center gap-2 shadow-sm shadow-primary/10 text-sm sm:text-base"
+                        title="Tải CV của Ngô Đình Khôi">
+                        <i class="fas fa-file-pdf text-rose-400"></i> Tải CV
+                    </a>
                     <a href="https://github.com/NgoDKhoi" target="_blank" rel="noopener noreferrer"
-                        class="border border-slate-700 hover:border-primary hover:text-primary text-slate-300 px-4 py-3 rounded-xl transition inline-flex items-center gap-2"
+                        class="border border-slate-700 hover:border-primary hover:text-primary text-slate-300 p-3 rounded-xl transition inline-flex items-center justify-center"
                         title="GitHub Profile">
                         <i class="fab fa-github text-xl"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank" rel="noopener noreferrer"
-                        class="border border-slate-700 hover:border-[#0077b5] hover:text-[#0077b5] text-slate-300 px-4 py-3 rounded-xl transition inline-flex items-center gap-2"
+                        class="border border-slate-700 hover:border-[#0077b5] hover:text-[#0077b5] text-slate-300 p-3 rounded-xl transition inline-flex items-center justify-center"
                         title="LinkedIn Profile">
                         <i class="fab fa-linkedin-in text-xl"></i>
                     </a>
@@ -140,6 +202,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- Scroll down indicator -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center pointer-events-none text-slate-500 text-xs gap-1 animate-bounce">
+            <span class="tracking-widest uppercase text-[10px]">Khám phá</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
 
     <!-- About Section -->
@@ -153,7 +221,7 @@
                 Tôi là sinh viên chuyên ngành <strong>Mạng máy tính và Truyền thông dữ liệu</strong> (Khóa 2024) tại trường <strong>Đại học Công nghệ Thông tin (UIT) - ĐHQG TP.HCM</strong>. Với tư duy kỹ thuật độc lập cùng khả năng tự học vững vàng, tôi thích đi sâu nghiên cứu kiến trúc phần mềm, hệ thống nhúng thông minh (AIoT / Edge AI) và tối ưu hóa hiệu năng để tạo ra sản phẩm hoàn thiện.
             </p>
             <!-- Badges -->
-            <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
                 <div class="inline-flex items-center bg-primary/10 rounded-xl px-5 py-2.5 border border-primary/20 hover:border-primary/50 transition cursor-default text-sm">
                     <i class="fas fa-users text-primary mr-2.5"></i>
                     <span class="font-medium text-primary">Ủy viên BCH Chi hội MMTT2024.2</span>
@@ -161,6 +229,30 @@
                 <div class="inline-flex items-center bg-primary/10 rounded-xl px-5 py-2.5 border border-primary/20 hover:border-primary/50 transition cursor-default text-sm">
                     <i class="fas fa-graduation-cap text-primary mr-2.5"></i>
                     <span class="font-medium text-primary">Sinh viên UIT - ĐHQG TP.HCM</span>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
+                <div class="bg-card/70 border border-slate-700/80 p-5 rounded-2xl hover:border-primary/40 transition">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-primary mb-1">04</div>
+                    <div class="text-sm font-semibold text-white">Dự Án Thực Chiến</div>
+                    <div class="text-xs text-slate-400 mt-1">AIoT & Games WebGL</div>
+                </div>
+                <div class="bg-card/70 border border-slate-700/80 p-5 rounded-2xl hover:border-primary/40 transition">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-primary mb-1">Năm 2</div>
+                    <div class="text-sm font-semibold text-white">Sinh Viên UIT</div>
+                    <div class="text-xs text-slate-400 mt-1">ĐHQG TP.HCM (2024 - Hiện tại)</div>
+                </div>
+                <div class="bg-card/70 border border-slate-700/80 p-5 rounded-2xl hover:border-primary/40 transition">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-primary mb-1">07 Thg</div>
+                    <div class="text-sm font-semibold text-white">CTV Game Design</div>
+                    <div class="text-xs text-slate-400 mt-1">Thiết kế logic level tại Lihuhu</div>
+                </div>
+                <div class="bg-card/70 border border-slate-700/80 p-5 rounded-2xl hover:border-primary/40 transition">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-primary mb-1">5+</div>
+                    <div class="text-sm font-semibold text-white">Ngôn Ngữ & Stack</div>
+                    <div class="text-xs text-slate-400 mt-1">C++, Rust, Python, C#...</div>
                 </div>
             </div>
         </div>
@@ -246,12 +338,12 @@
 
             <div id="projects-list" class="flex flex-col gap-12">
                 
-                <!-- Project 1: AutoClaw - AI Robot -->
-                <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700/80 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group"
+                <!-- Project 1: AutoClaw - AI Robot (Featured Flagship) -->
+                <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border-2 border-emerald-500/60 hover:border-primary transition duration-500 shadow-2xl featured-glow flex flex-col md:flex-row group"
                      data-category="aiot">
                     <!-- Visual -->
                     <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
-                        <div class="absolute inset-0 bg-[url('../images/projects/autoclaw.webp')] bg-cover bg-center opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 thumb-autoclaw bg-cover bg-center opacity-100 transition duration-500"></div>
                         <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
                             <i class="fas fa-robot text-7xl text-primary animate-pulse-slow"></i>
@@ -261,7 +353,10 @@
 
                     <!-- Info -->
                     <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
-                        <div class="flex items-center gap-2 mb-3">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold rounded-lg uppercase tracking-wider inline-flex items-center gap-1.5">
+                                <i class="fas fa-star text-amber-400 text-xs"></i> Featured Project
+                            </span>
                             <span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">
                                 AIoT / Robotics
                             </span>
@@ -320,7 +415,7 @@
                      data-category="game">
                     <!-- Visual -->
                     <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
-                        <div class="absolute inset-0 bg-[url('../images/projects/fruit-slash.png')] bg-cover bg-center opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 thumb-fruit-slash bg-cover bg-center opacity-100 transition duration-500"></div>
                         <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
                             <i class="fas fa-hand-sparkles text-7xl text-primary animate-pulse-slow"></i>
@@ -387,7 +482,7 @@
                      data-category="game">
                     <!-- Visual -->
                     <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
-                        <div class="absolute inset-0 bg-[url('../images/projects/meo.webp')] bg-cover bg-center opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 thumb-meo bg-cover bg-center opacity-100 transition duration-500"></div>
                         <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
                             <i class="fas fa-bomb text-7xl text-primary animate-pulse-slow"></i>
@@ -454,7 +549,7 @@
                      data-category="game">
                     <!-- Visual -->
                     <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
-                        <div class="absolute inset-0 bg-[url('../images/projects/tetris.webp')] bg-cover bg-center opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 thumb-tetris bg-cover bg-center opacity-100 transition duration-500"></div>
                         <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
                             <i class="fas fa-cubes-stacked text-7xl text-primary animate-pulse-slow"></i>
@@ -524,41 +619,64 @@
     <section id="contact" class="py-24 relative overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Kết Nối Với Tôi</h2>
             <p class="text-slate-400 mb-12 text-base sm:text-lg max-w-xl mx-auto">
-                Tôi luôn sẵn sàng đón nhận những cơ hội hợp tác và thử thách kỹ thuật mới.
+                Tôi luôn sẵn sàng đón nhận những cơ hội hợp tác thực tập và thử thách kỹ thuật mới.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- 4 Contact Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Email -->
                 <a href="mailto:Khoi123719@gmail.com"
-                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-primary transition duration-300">
-                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-primary group-hover:text-white transition">
+                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-primary transition duration-300 flex flex-col items-center justify-center">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 group-hover:bg-primary group-hover:text-white transition">
                         <i class="fas fa-envelope text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">Email</h3>
-                    <p class="text-slate-400 text-sm group-hover:text-primary transition">Khoi123719@gmail.com</p>
+                    <p class="text-slate-400 text-xs sm:text-sm group-hover:text-primary transition truncate max-w-full">Khoi123719@gmail.com</p>
                 </a>
 
                 <!-- LinkedIn -->
                 <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank" rel="noopener noreferrer"
-                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-primary transition duration-300">
-                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-[#0077b5] group-hover:text-white transition">
+                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-[#0077b5] transition duration-300 flex flex-col items-center justify-center">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 group-hover:bg-[#0077b5] group-hover:text-white transition">
                         <i class="fab fa-linkedin-in text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">LinkedIn</h3>
-                    <p class="text-slate-400 text-sm group-hover:text-[#0077b5] transition">in/ngodkhoi</p>
+                    <p class="text-slate-400 text-xs sm:text-sm group-hover:text-[#0077b5] transition">in/ngodkhoi</p>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/NgoDKhoi" target="_blank" rel="noopener noreferrer"
+                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-white transition duration-300 flex flex-col items-center justify-center">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 group-hover:bg-white group-hover:text-slate-900 transition">
+                        <i class="fab fa-github text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-medium mb-1">GitHub</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm group-hover:text-white transition">github.com/NgoDKhoi</p>
                 </a>
 
                 <!-- Facebook -->
                 <a href="https://facebook.com/ngo.d.khoi.2024" target="_blank" rel="noopener noreferrer"
-                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-primary transition duration-300">
-                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-[#1877f2] group-hover:text-white transition">
+                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-[#1877f2] transition duration-300 flex flex-col items-center justify-center">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-4 text-slate-400 group-hover:bg-[#1877f2] group-hover:text-white transition">
                         <i class="fab fa-facebook-f text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">Facebook</h3>
-                    <p class="text-slate-400 text-sm group-hover:text-[#1877f2] transition">Ngô Đình Khôi</p>
+                    <p class="text-slate-400 text-xs sm:text-sm group-hover:text-[#1877f2] transition">Ngô Đình Khôi</p>
+                </a>
+            </div>
+
+            <!-- Resume Download Box -->
+            <div class="mt-10 p-6 bg-card/60 border border-slate-700/80 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 max-w-3xl mx-auto">
+                <div class="text-center sm:text-left">
+                    <h4 class="text-white font-semibold text-base mb-1">Cần xem hồ sơ chi tiết?</h4>
+                    <p class="text-slate-400 text-xs sm:text-sm">Tải bản CV định dạng PDF tóm tắt lộ trình học tập, dự án và kỹ năng kỹ thuật.</p>
+                </div>
+                <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer"
+                    class="shrink-0 bg-primary hover:bg-primaryHover text-white px-6 py-2.5 rounded-xl font-medium text-sm transition shadow-md shadow-primary/25 inline-flex items-center gap-2">
+                    <i class="fas fa-file-pdf"></i> Tải CV (PDF)
                 </a>
             </div>
         </div>
