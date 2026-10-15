@@ -42,8 +42,20 @@
     <link rel="stylesheet" href="css/style.css">
     
     <style>
+        /* 1. Global Overflow Prevention & Smooth Navigation */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
+        }
+
+        section {
+            scroll-margin-top: 5rem;
         }
 
         /* Gradient xanh lá cho chữ */
@@ -82,6 +94,283 @@
         .thumb-tetris {
             background-image: url('images/projects/tetris.webp');
         }
+
+        /* Project Visual Thumbnail Banner: 16:9 banner with height 160px - 200px on mobile */
+        .project-visual {
+            width: 100%;
+            height: 190px;
+            min-height: 160px;
+            max-height: 200px;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .project-info {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .project-visual {
+                width: 45%;
+                height: auto;
+                min-height: 320px;
+                max-height: none;
+            }
+            .project-info {
+                width: 55%;
+            }
+            .md\:w-\[45\%\] {
+                width: 45%;
+            }
+            .md\:w-\[55\%\] {
+                width: 55%;
+            }
+        }
+
+        /* Mobile Menu Smooth Transition & Overflow Handling */
+        #mobile-menu {
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        /* Minimum Touch Target Standards (>= 44x44px) */
+        .touch-target,
+        .filter-btn,
+        .mobile-nav-link,
+        .hero-cta-btn,
+        .project-action-btn,
+        .contact-cv-btn,
+        .min-h-\[44px\] {
+            min-height: 44px;
+        }
+
+        .filter-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-action-btn,
+        .min-w-\[130px\] {
+            min-width: 130px;
+        }
+
+        #mobile-menu-btn,
+        #back-to-top,
+        .social-btn,
+        .w-11 {
+            width: 44px;
+        }
+
+        #mobile-menu-btn,
+        #back-to-top,
+        .social-btn,
+        .h-11 {
+            height: 44px;
+        }
+
+        #mobile-menu-btn,
+        #back-to-top,
+        .social-btn,
+        .min-w-\[44px\] {
+            min-width: 44px;
+        }
+
+        .text-\[10px\] {
+            font-size: 10px;
+        }
+
+        /* Missing Grid Utilities in Pre-built CSS */
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .grid-cols-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        @media (min-width: 640px) {
+            .sm\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 768px) {
+            .md\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        /* Responsive Display & Navigation Utilities */
+        @media (min-width: 768px) {
+            .md\:hidden { display: none !important; }
+            .md\:flex { display: flex !important; }
+        }
+        @media (min-width: 640px) {
+            .sm\:flex { display: flex !important; }
+            .sm\:w-auto { width: auto !important; }
+            .sm\:items-center { align-items: center !important; }
+        }
+        .max-h-\[calc\(100vh-4rem\)\] {
+            max-height: calc(100vh - 4rem);
+        }
+        .overflow-y-auto {
+            overflow-y: auto;
+        }
+
+        /* Hero Avatar & Positioning Utilities */
+        .w-60 { width: 15rem; }
+        .h-60 { height: 15rem; }
+        .w-80 { width: 20rem; }
+        .h-80 { height: 20rem; }
+        .w-2 { width: 0.5rem; }
+        .h-2 { height: 0.5rem; }
+        .bottom-16 { bottom: 4rem; }
+        .inset-2 { top: 0.5rem; right: 0.5rem; bottom: 0.5rem; left: 0.5rem; }
+        .top-6 { top: 1.5rem; }
+        .-left-2 { left: -0.5rem; }
+        .-right-2 { right: -0.5rem; }
+        .hover\:scale-110:hover { transform: scale(1.1); }
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        .animate-ping {
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        /* Typography & Layout Constraints */
+        .truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .whitespace-normal {
+            white-space: normal;
+        }
+        .antialiased {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .backdrop-blur-md {
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+        }
+        .text-\[11px\] { font-size: 11px; line-height: 1rem; }
+        .leading-tight { line-height: 1.25; }
+        .break-words {
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+        .font-extrabold { font-weight: 800; }
+        .text-base { font-size: 1rem; line-height: 1.5rem; }
+        .opacity-75 { opacity: 0.75; }
+
+        /* Section Spacing & Box Model Utilities */
+        .pt-24 { padding-top: 6rem; }
+        .pb-16 { padding-bottom: 4rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        .p-4 { padding: 1rem; }
+        .p-5 { padding: 1.25rem; }
+        .px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
+        .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+        .pt-2 { padding-top: 0.5rem; }
+        .pt-3 { padding-top: 0.75rem; }
+        .pb-5 { padding-bottom: 1.25rem; }
+        .mb-2\.5 { margin-bottom: 0.625rem; }
+        .mr-2\.5 { margin-right: 0.625rem; }
+        .mt-0\.5 { margin-top: 0.125rem; }
+        .self-start { align-self: flex-start; }
+        .gap-1\.5 { gap: 0.375rem; }
+        .gap-2\.5 { gap: 0.625rem; }
+        .gap-10 { gap: 2.5rem; }
+        .space-x-7 > :not([hidden]) ~ :not([hidden]) {
+            margin-left: 1.75rem;
+        }
+        .max-w-xl { max-width: 36rem; }
+        .max-w-5xl { max-width: 64rem; }
+        .max-w-full { max-width: 100%; }
+
+        /* Colors, Borders, Shadows & Pointer Interactions */
+        .bg-dark\/95 { background-color: rgba(15, 23, 42, 0.95); }
+        .bg-card\/20 { background-color: rgba(30, 41, 59, 0.2); }
+        .bg-card\/60 { background-color: rgba(30, 41, 59, 0.6); }
+        .bg-card\/70 { background-color: rgba(30, 41, 59, 0.7); }
+        .bg-slate-800\/60 { background-color: rgba(30, 41, 59, 0.6); }
+        .bg-amber-500\/20 { background-color: rgba(245, 158, 11, 0.2); }
+        .text-amber-300 { color: #fcd34d; }
+        .text-amber-400 { color: #fbbf24; }
+        .border-amber-500\/40 { border-color: rgba(245, 158, 11, 0.4); }
+        .border-emerald-500\/60 { border-color: rgba(16, 185, 129, 0.6); }
+        .border-primary\/25 { border-color: rgba(16, 185, 129, 0.25); }
+        .border-primary\/40 { border-color: rgba(16, 185, 129, 0.4); }
+        .border-primary\/80 { border-color: rgba(16, 185, 129, 0.8); }
+        .border-slate-800\/60 { border-color: rgba(30, 41, 59, 0.6); }
+        .hover\:border-\[\#0077b5\]:hover { border-color: #0077b5; }
+        .hover\:text-\[\#0077b5\]:hover { color: #0077b5; }
+        .hover\:border-slate-700:hover { border-color: rgb(51, 65, 85); }
+        .hover\:border-primary\/40:hover { border-color: rgba(16, 185, 129, 0.4); }
+        .hover\:border-primary\/60:hover { border-color: rgba(16, 185, 129, 0.6); }
+        .focus\:outline-none:focus { outline: 2px solid transparent; outline-offset: 2px; }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); }
+        .shadow-primary\/10 { --tw-shadow-color: rgba(16, 185, 129, 0.1); --tw-shadow: var(--tw-shadow-colored); }
+        .pointer-events-none { pointer-events: none; }
+        .cursor-pointer { cursor: pointer; }
+        .hover\:opacity-90:hover { opacity: 0.9; }
+
+        @media (min-width: 640px) {
+            .sm\:w-72 { width: 18rem; }
+            .sm\:h-72 { height: 18rem; }
+            .sm\:top-8 { top: 2rem; }
+            .sm\:-bottom-3 { bottom: -0.75rem; }
+            .sm\:-right-3 { right: -0.75rem; }
+            .sm\:-left-4 { left: -1rem; }
+            .sm\:p-5 { padding: 1.25rem; }
+            .sm\:p-6 { padding: 1.5rem; }
+            .sm\:p-7 { padding: 1.75rem; }
+            .sm\:mb-14 { margin-bottom: 3.5rem; }
+            .sm\:gap-3 { gap: 0.75rem; }
+            .sm\:gap-4 { gap: 1rem; }
+            .sm\:gap-12 { gap: 3rem; }
+            .sm\:mt-0 { margin-top: 0; }
+            .sm\:self-center { align-self: center; }
+            .sm\:whitespace-normal { white-space: normal; }
+            .sm\:text-xs { font-size: 0.75rem; line-height: 1rem; }
+            .sm\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+            .sm\:text-base { font-size: 1rem; line-height: 1.5rem; }
+            .sm\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+            .sm\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
+            .sm\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+            .sm\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+            .sm\:text-5xl { font-size: 3rem; line-height: 1; }
+        }
+
+        @media (min-width: 768px) {
+            .md\:text-base { font-size: 1rem; line-height: 1.5rem; }
+            .md\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+            .md\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+            .md\:text-5xl { font-size: 3rem; line-height: 1; }
+            .md\:text-7xl { font-size: 4.5rem; line-height: 1; }
+            .md\:p-8 { padding: 2rem; }
+        }
+
+        @keyframes pulseSlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.04); }
+        }
+        .animate-pulse-slow {
+            animation: pulseSlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
     </style>
 </head>
 
@@ -111,7 +400,7 @@
 
                 <!-- Mobile Hamburger Button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" type="button" aria-label="Toggle menu" class="text-slate-400 hover:text-white focus:outline-none p-2 rounded-lg">
+                    <button id="mobile-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" class="touch-target text-slate-400 hover:text-white focus:outline-none w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg border border-slate-800 hover:border-slate-700 transition">
                         <i id="menu-icon" class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -119,14 +408,14 @@
         </div>
 
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark/95 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
-            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">Giới thiệu</a>
-            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">Kỹ năng</a>
-            <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">Dự án</a>
-            <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">
-                <i class="fas fa-file-pdf text-rose-400 mr-2"></i> Tải CV (PDF)
+        <div id="mobile-menu" class="hidden md:hidden bg-dark/95 border-b border-slate-800 px-4 pt-3 pb-5 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
+            <a href="#about" class="mobile-nav-link min-h-[44px] flex items-center px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/60 transition">Giới thiệu</a>
+            <a href="#skills" class="mobile-nav-link min-h-[44px] flex items-center px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/60 transition">Kỹ năng</a>
+            <a href="#projects" class="mobile-nav-link min-h-[44px] flex items-center px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/60 transition">Dự án</a>
+            <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer" class="mobile-nav-link min-h-[44px] flex items-center px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/60 transition">
+                <i class="fas fa-file-pdf text-rose-400 mr-2.5"></i> Tải CV (PDF)
             </a>
-            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-primary border border-primary/40 text-center hover:bg-primary hover:text-white">Liên hệ</a>
+            <a href="#contact" class="mobile-nav-link min-h-[44px] flex items-center justify-center px-4 py-2.5 rounded-lg text-base font-medium text-primary border border-primary/40 hover:bg-primary hover:text-white transition">Liên hệ</a>
         </div>
     </nav>
 
@@ -140,12 +429,12 @@
             <!-- Left Column: Intro -->
             <div class="w-full md:w-1/2 text-center md:text-left">
                 <!-- Status Badge -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold mb-4 backdrop-blur-sm">
-                    <span class="relative flex h-2 w-2">
+                <div class="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] sm:text-xs font-semibold mb-4 backdrop-blur-sm max-w-full text-left">
+                    <span class="relative flex h-2 w-2 shrink-0 mt-0.5 sm:mt-0 self-start sm:self-center">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
-                    <span>Sẵn sàng cho cơ hội Thực tập / Intern 2026 (AIoT & Embedded)</span>
+                    <span class="leading-tight break-words">Sẵn sàng cho cơ hội Thực tập / Intern 2026 (AIoT & Embedded)</span>
                 </div>
 
                 <p class="text-primary font-mono text-sm uppercase tracking-widest mb-2">Xin chào, tôi là</p>
@@ -162,41 +451,45 @@
                 </p>
 
                 <!-- Actions -->
-                <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
-                    <a href="#projects"
-                        class="bg-primary hover:bg-primaryHover text-white px-6 py-3 rounded-xl font-medium transition shadow-lg shadow-primary/25 inline-flex items-center gap-2 text-sm sm:text-base">
-                        <i class="fas fa-folder-open text-sm"></i> Xem Dự Án
-                    </a>
-                    <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer"
-                        class="border border-primary/80 hover:border-primary text-primary hover:bg-primary hover:text-white px-5 py-3 rounded-xl font-medium transition inline-flex items-center gap-2 shadow-sm shadow-primary/10 text-sm sm:text-base"
-                        title="Tải CV của Ngô Đình Khôi">
-                        <i class="fas fa-file-pdf text-rose-400"></i> Tải CV
-                    </a>
-                    <a href="https://github.com/NgoDKhoi" target="_blank" rel="noopener noreferrer"
-                        class="border border-slate-700 hover:border-primary hover:text-primary text-slate-300 p-3 rounded-xl transition inline-flex items-center justify-center"
-                        title="GitHub Profile">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank" rel="noopener noreferrer"
-                        class="border border-slate-700 hover:border-[#0077b5] hover:text-[#0077b5] text-slate-300 p-3 rounded-xl transition inline-flex items-center justify-center"
-                        title="LinkedIn Profile">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
+                <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-3 w-full sm:w-auto">
+                    <div class="grid grid-cols-2 gap-3 w-full sm:w-auto sm:flex sm:items-center">
+                        <a href="#projects"
+                            class="hero-cta-btn touch-target min-h-[44px] bg-primary hover:bg-primaryHover text-white px-3 sm:px-5 py-3 rounded-xl font-medium transition shadow-lg shadow-primary/25 inline-flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base text-center">
+                            <i class="fas fa-folder-open text-xs sm:text-sm"></i> <span>Xem Dự Án</span>
+                        </a>
+                        <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer"
+                            class="hero-cta-btn touch-target min-h-[44px] border border-primary/80 hover:border-primary text-primary hover:bg-primary hover:text-white px-3 sm:px-5 py-3 rounded-xl font-medium transition inline-flex items-center justify-center gap-1.5 sm:gap-2 shadow-sm shadow-primary/10 text-xs sm:text-sm md:text-base text-center"
+                            title="Tải CV của Ngô Đình Khôi">
+                            <i class="fas fa-file-pdf text-rose-400"></i> <span>Tải CV</span>
+                        </a>
+                    </div>
+                    <div class="flex items-center justify-center gap-3">
+                        <a href="https://github.com/NgoDKhoi" target="_blank" rel="noopener noreferrer"
+                            class="social-btn touch-target w-11 h-11 min-w-[44px] min-h-[44px] border border-slate-700 hover:border-primary hover:text-primary text-slate-300 rounded-xl transition inline-flex items-center justify-center"
+                            title="GitHub Profile" aria-label="GitHub Profile">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank" rel="noopener noreferrer"
+                            class="social-btn touch-target w-11 h-11 min-w-[44px] min-h-[44px] border border-slate-700 hover:border-[#0077b5] hover:text-[#0077b5] text-slate-300 rounded-xl transition inline-flex items-center justify-center"
+                            title="LinkedIn Profile" aria-label="LinkedIn Profile">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <!-- Right Column: Avatar -->
             <div class="w-full md:w-1/2 flex justify-center relative">
                 <div class="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80">
-                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 animate-[spin_12s_linear_infinite]"></div>
+                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-primary/25"></div>
                     <div class="absolute inset-2 rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl shadow-primary/20 glow-effect">
                         <img src="images/avatar.webp" alt="Ngô Đình Khôi" loading="eager" class="w-full h-full object-cover">
                     </div>
                     <!-- Tech badges floating -->
-                    <div class="absolute -bottom-3 -right-3 bg-card border border-slate-700 p-3 rounded-xl shadow-xl animate-bounce" title="Robotics & Hardware">
+                    <div class="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 bg-card border border-slate-700/80 hover:border-primary/60 p-3 rounded-xl shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer" title="Robotics & Hardware">
                         <i class="fas fa-microchip text-2xl text-primary"></i>
                     </div>
-                    <div class="absolute top-8 -left-5 bg-card border border-slate-700 p-3 rounded-xl shadow-xl animate-pulse" title="Networks & Systems">
+                    <div class="absolute top-6 -left-2 sm:top-8 sm:-left-4 bg-card border border-slate-700/80 hover:border-primary/60 p-3 rounded-xl shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer" title="Networks & Systems">
                         <i class="fas fa-network-wired text-2xl text-primary"></i>
                     </div>
                 </div>
@@ -221,35 +514,35 @@
                 Tôi là sinh viên chuyên ngành <strong>Mạng máy tính và Truyền thông dữ liệu</strong> (Khóa 2024) tại trường <strong>Đại học Công nghệ Thông tin (UIT) - ĐHQG TP.HCM</strong>. Với tư duy kỹ thuật độc lập cùng khả năng tự học vững vàng, tôi thích đi sâu nghiên cứu kiến trúc phần mềm, hệ thống nhúng thông minh (AIoT / Edge AI) và tối ưu hóa hiệu năng để tạo ra sản phẩm hoàn thiện.
             </p>
             <!-- Badges -->
-            <div class="flex flex-wrap justify-center gap-4 mb-10">
-                <div class="inline-flex items-center bg-primary/10 rounded-xl px-5 py-2.5 border border-primary/20 hover:border-primary/50 transition cursor-default text-sm">
-                    <i class="fas fa-users text-primary mr-2.5"></i>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
+                <div class="inline-flex items-center bg-primary/10 rounded-xl px-4 sm:px-5 py-2.5 border border-primary/20 hover:border-primary/50 transition cursor-default text-xs sm:text-sm">
+                    <i class="fas fa-users text-primary mr-2 sm:mr-2.5"></i>
                     <span class="font-medium text-primary">Ủy viên BCH Chi hội MMTT2024.2</span>
                 </div>
-                <div class="inline-flex items-center bg-primary/10 rounded-xl px-5 py-2.5 border border-primary/20 hover:border-primary/50 transition cursor-default text-sm">
-                    <i class="fas fa-graduation-cap text-primary mr-2.5"></i>
+                <div class="inline-flex items-center bg-primary/10 rounded-xl px-4 sm:px-5 py-2.5 border border-primary/20 hover:border-primary/50 transition cursor-default text-xs sm:text-sm">
+                    <i class="fas fa-graduation-cap text-primary mr-2 sm:mr-2.5"></i>
                     <span class="font-medium text-primary">Sinh viên UIT - ĐHQG TP.HCM</span>
                 </div>
             </div>
 
             <!-- Stats Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
-                <div class="bg-card/70 border border-slate-700/80 p-5 rounded-2xl hover:border-primary/40 transition">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-left">
+                <div class="bg-card/70 border border-slate-700/80 p-4 sm:p-5 rounded-2xl hover:border-primary/40 transition">
                     <div class="text-2xl sm:text-3xl font-extrabold text-primary mb-1">04</div>
                     <div class="text-sm font-semibold text-white">Dự Án Thực Chiến</div>
                     <div class="text-xs text-slate-400 mt-1">AIoT & Games WebGL</div>
                 </div>
-                <div class="bg-card/70 border border-slate-700/80 p-5 rounded-2xl hover:border-primary/40 transition">
+                <div class="bg-card/70 border border-slate-700/80 p-4 sm:p-5 rounded-2xl hover:border-primary/40 transition">
                     <div class="text-2xl sm:text-3xl font-extrabold text-primary mb-1">Năm 2</div>
                     <div class="text-sm font-semibold text-white">Sinh Viên UIT</div>
                     <div class="text-xs text-slate-400 mt-1">ĐHQG TP.HCM (2024 - Hiện tại)</div>
                 </div>
-                <div class="bg-card/70 border border-slate-700/80 p-5 rounded-2xl hover:border-primary/40 transition">
+                <div class="bg-card/70 border border-slate-700/80 p-4 sm:p-5 rounded-2xl hover:border-primary/40 transition">
                     <div class="text-2xl sm:text-3xl font-extrabold text-primary mb-1">07 Thg</div>
                     <div class="text-sm font-semibold text-white">CTV Game Design</div>
                     <div class="text-xs text-slate-400 mt-1">Thiết kế logic level tại Lihuhu</div>
                 </div>
-                <div class="bg-card/70 border border-slate-700/80 p-5 rounded-2xl hover:border-primary/40 transition">
+                <div class="bg-card/70 border border-slate-700/80 p-4 sm:p-5 rounded-2xl hover:border-primary/40 transition">
                     <div class="text-2xl sm:text-3xl font-extrabold text-primary mb-1">5+</div>
                     <div class="text-sm font-semibold text-white">Ngôn Ngữ & Stack</div>
                     <div class="text-xs text-slate-400 mt-1">C++, Rust, Python, C#...</div>
@@ -324,35 +617,35 @@
             </div>
 
             <!-- Project Filter Buttons -->
-            <div class="flex flex-wrap justify-center gap-3 mb-14">
-                <button type="button" class="filter-btn active px-5 py-2 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-primary transition" data-filter="all">
+            <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-12 sm:mb-14">
+                <button type="button" class="filter-btn active min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-primary transition inline-flex items-center justify-center" data-filter="all">
                     Tất cả (4)
                 </button>
-                <button type="button" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-primary transition" data-filter="aiot">
+                <button type="button" class="filter-btn min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-primary transition inline-flex items-center justify-center" data-filter="aiot">
                     <i class="fas fa-robot mr-1.5 text-xs"></i> AIoT & Robotics (1)
                 </button>
-                <button type="button" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-primary transition" data-filter="game">
+                <button type="button" class="filter-btn min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-primary transition inline-flex items-center justify-center" data-filter="game">
                     <i class="fas fa-gamepad mr-1.5 text-xs"></i> Game & WebGL (3)
                 </button>
             </div>
 
-            <div id="projects-list" class="flex flex-col gap-12">
+            <div id="projects-list" class="flex flex-col gap-10 sm:gap-12">
                 
                 <!-- Project 1: AutoClaw - AI Robot (Featured Flagship) -->
                 <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border-2 border-emerald-500/60 hover:border-primary transition duration-500 shadow-2xl featured-glow flex flex-col md:flex-row group"
                      data-category="aiot">
                     <!-- Visual -->
-                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
+                    <div class="project-visual w-full md:w-[45%] bg-black/60 flex items-center justify-center p-6 md:p-8 relative overflow-hidden group/image shrink-0">
                         <div class="absolute inset-0 thumb-autoclaw bg-cover bg-center opacity-100 transition duration-500"></div>
                         <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
-                            <i class="fas fa-robot text-7xl text-primary animate-pulse-slow"></i>
-                            <i class="fas fa-car-side text-4xl text-white absolute -bottom-3 -right-3 drop-shadow-lg"></i>
+                            <i class="fas fa-robot text-6xl md:text-7xl text-primary animate-pulse-slow"></i>
+                            <i class="fas fa-car-side text-3xl md:text-4xl text-white absolute -bottom-3 -right-3 drop-shadow-lg"></i>
                         </div>
                     </div>
 
                     <!-- Info -->
-                    <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
+                    <div class="project-info w-full md:w-[55%] p-5 sm:p-7 md:p-10 flex flex-col justify-center">
                         <div class="flex flex-wrap items-center gap-2 mb-3">
                             <span class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold rounded-lg uppercase tracking-wider inline-flex items-center gap-1.5">
                                 <i class="fas fa-star text-amber-400 text-xs"></i> Featured Project
@@ -369,7 +662,7 @@
                             AutoClaw - AI Robot
                         </h3>
 
-                        <p class="text-slate-400 text-sm sm:text-base mb-6 leading-relaxed">
+                        <p class="text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
                             Xe tự hành thông minh (Edge AI Robot) tích hợp điều khiển đa phương thức: thủ công, giọng nói tiếng Việt, cử chỉ bàn tay. Xử lý trực tiếp trên GPU Client kết hợp phanh khẩn cấp tự động và Telegram Bot.
                         </p>
 
@@ -389,7 +682,7 @@
                         <!-- Key Highlights -->
                         <div class="mb-8">
                             <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Điểm nổi bật</h4>
-                            <ul class="text-slate-400 text-xs sm:text-sm space-y-2 list-disc list-inside">
+                            <ul class="text-slate-300 text-xs sm:text-sm space-y-2 list-disc list-inside">
                                 <li><strong>Đa phương thức:</strong> Điều khiển qua cử chỉ tay (MediaPipe), giọng nói tiếng Việt và Web Dashboard.</li>
                                 <li><strong>Lõi an toàn (Safety Reflex):</strong> Viết bằng Rust chạy đa luồng, tự động phanh khẩn cấp chống va chạm.</li>
                                 <li><strong>Tuần tra tự trị:</strong> Tích hợp Gemini 2.0 Vision AI phân tích ảnh camera & sonar để tự né chướng ngại vật.</li>
@@ -397,13 +690,13 @@
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="flex flex-wrap gap-3 mt-auto">
+                        <div class="flex flex-wrap gap-3 mt-auto pt-2">
                             <a href="https://github.com/NgoDKhoi/NT131.Q21-Group-9#readme" target="_blank" rel="noopener noreferrer"
-                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
+                                class="project-action-btn touch-target flex-1 min-w-[130px] min-h-[44px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
                                 <i class="fas fa-book-open"></i> Hướng Dẫn
                             </a>
                             <a href="https://github.com/NgoDKhoi/NT131.Q21-Group-9.git" target="_blank" rel="noopener noreferrer"
-                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
+                                class="project-action-btn touch-target flex-1 min-w-[130px] min-h-[44px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
                                 <i class="fab fa-github"></i> Mã Nguồn
                             </a>
                         </div>
@@ -414,20 +707,20 @@
                 <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700/80 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group"
                      data-category="game">
                     <!-- Visual -->
-                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
+                    <div class="project-visual w-full md:w-[45%] bg-black/60 flex items-center justify-center p-6 md:p-8 relative overflow-hidden group/image shrink-0">
                         <div class="absolute inset-0 thumb-fruit-slash bg-cover bg-center opacity-100 transition duration-500"></div>
                         <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
-                            <i class="fas fa-hand-sparkles text-7xl text-primary animate-pulse-slow"></i>
-                            <i class="fas fa-gamepad text-5xl text-white absolute -bottom-3 -right-3 drop-shadow-lg"></i>
+                            <i class="fas fa-hand-sparkles text-6xl md:text-7xl text-primary animate-pulse-slow"></i>
+                            <i class="fas fa-gamepad text-4xl md:text-5xl text-white absolute -bottom-3 -right-3 drop-shadow-lg"></i>
                         </div>
                     </div>
 
                     <!-- Info -->
-                    <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
+                    <div class="project-info w-full md:w-[55%] p-5 sm:p-7 md:p-10 flex flex-col justify-center">
                         <div class="flex items-center gap-2 mb-3">
                             <span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">
-                                Game / Computer Vision
+                                Game & WebGL / Computer Vision
                             </span>
                             <span class="px-3 py-1 bg-slate-700/80 text-slate-300 text-xs font-semibold rounded-lg uppercase tracking-wider">
                                 Solo
@@ -438,7 +731,7 @@
                             Fruit Slash Game
                         </h3>
 
-                        <p class="text-slate-400 text-sm sm:text-base mb-6 leading-relaxed">
+                        <p class="text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
                             Tựa game WebGL bảo vệ máy chủ kết hợp Computer Vision. Người chơi sử dụng chính bàn tay thật trước Webcam để chém mục tiêu theo thời gian thực nhờ công nghệ nhận diện cử chỉ độ trễ thấp.
                         </p>
 
@@ -456,7 +749,7 @@
                         <!-- Key Highlights -->
                         <div class="mb-8">
                             <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Điểm nổi bật</h4>
-                            <ul class="text-slate-400 text-xs sm:text-sm space-y-2 list-disc list-inside">
+                            <ul class="text-slate-300 text-xs sm:text-sm space-y-2 list-disc list-inside">
                                 <li><strong>Hand Tracking:</strong> Nhận diện và theo dõi tọa độ bàn tay trực tiếp trên trình duyệt với độ trễ cực thấp.</li>
                                 <li><strong>Gesture Recognition:</strong> Tính toán khoảng cách tọa độ để nhận diện thao tác "Pinch" (nhón/chém).</li>
                                 <li><strong>Unity-Web Bridge:</strong> Sử dụng file <code>.jslib</code> đồng bộ dữ liệu ML từ JS vào game loop Unity.</li>
@@ -464,13 +757,13 @@
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="flex flex-wrap gap-3 mt-auto">
+                        <div class="flex flex-wrap gap-3 mt-auto pt-2">
                             <a href="https://ngodkhoi.vercel.app/Fruit-Slash/" target="_blank" rel="noopener noreferrer"
-                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
+                                class="project-action-btn touch-target flex-1 min-w-[130px] min-h-[44px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
                                 <i class="fas fa-play"></i> Chơi Thử Live
                             </a>
                             <a href="https://github.com/NgoDKhoi/Fruit-Slash-Game" target="_blank" rel="noopener noreferrer"
-                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
+                                class="project-action-btn touch-target flex-1 min-w-[130px] min-h-[44px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
                                 <i class="fab fa-github"></i> Mã Nguồn
                             </a>
                         </div>
@@ -481,20 +774,20 @@
                 <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700/80 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group"
                      data-category="game">
                     <!-- Visual -->
-                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
+                    <div class="project-visual w-full md:w-[45%] bg-black/60 flex items-center justify-center p-6 md:p-8 relative overflow-hidden group/image shrink-0">
                         <div class="absolute inset-0 thumb-meo bg-cover bg-center opacity-100 transition duration-500"></div>
                         <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
-                            <i class="fas fa-bomb text-7xl text-primary animate-pulse-slow"></i>
-                            <i class="fas fa-cat text-5xl text-white absolute -bottom-2 -right-3 drop-shadow-lg"></i>
+                            <i class="fas fa-bomb text-6xl md:text-7xl text-primary animate-pulse-slow"></i>
+                            <i class="fas fa-cat text-4xl md:text-5xl text-white absolute -bottom-2 -right-3 drop-shadow-lg"></i>
                         </div>
                     </div>
 
                     <!-- Info -->
-                    <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
+                    <div class="project-info w-full md:w-[55%] p-5 sm:p-7 md:p-10 flex flex-col justify-center">
                         <div class="flex items-center gap-2 mb-3">
                             <span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">
-                                Multiplayer Game
+                                Multiplayer Game / Network Sync
                             </span>
                             <span class="px-3 py-1 bg-slate-700/80 text-slate-300 text-xs font-semibold rounded-lg uppercase tracking-wider">
                                 Nhóm 4 người
@@ -505,7 +798,7 @@
                             Exploding Kittens Game
                         </h3>
 
-                        <p class="text-slate-400 text-sm sm:text-base mb-6 leading-relaxed">
+                        <p class="text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
                             Game thẻ bài chiến thuật Multiplayer thời gian thực dựa trên Exploding Kittens (Mèo nổ) xây dựng trên Unity Engine và Firebase. Hỗ trợ hệ thống phòng chơi (Lobby) và thi đấu trực tuyến với bạn bè.
                         </p>
 
@@ -523,7 +816,7 @@
                         <!-- Key Highlights -->
                         <div class="mb-8">
                             <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Điểm nổi bật</h4>
-                            <ul class="text-slate-400 text-xs sm:text-sm space-y-2 list-disc list-inside">
+                            <ul class="text-slate-300 text-xs sm:text-sm space-y-2 list-disc list-inside">
                                 <li>Hệ thống tài khoản và đồng bộ tiến trình thông qua Firebase Authentication.</li>
                                 <li>Cơ chế tạo phòng (Lobby), bắt cặp và thi đấu Online Multiplayer thời gian thực.</li>
                                 <li>Tái hiện đầy đủ cơ chế thẻ bài chiến thuật (Explode, Defuse, Attack, Skip, Shuffle).</li>
@@ -531,13 +824,13 @@
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="flex flex-wrap gap-3 mt-auto">
+                        <div class="flex flex-wrap gap-3 mt-auto pt-2">
                             <a href="https://github.com/NgoDKhoi/Meo_Boom/blob/main/README.md" target="_blank" rel="noopener noreferrer"
-                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
+                                class="project-action-btn touch-target flex-1 min-w-[130px] min-h-[44px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
                                 <i class="fas fa-book-open"></i> Hướng Dẫn
                             </a>
                             <a href="https://github.com/NgoDKhoi/M-o-N-" target="_blank" rel="noopener noreferrer"
-                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
+                                class="project-action-btn touch-target flex-1 min-w-[130px] min-h-[44px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
                                 <i class="fab fa-github"></i> Mã Nguồn
                             </a>
                         </div>
@@ -548,17 +841,17 @@
                 <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700/80 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group"
                      data-category="game">
                     <!-- Visual -->
-                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
+                    <div class="project-visual w-full md:w-[45%] bg-black/60 flex items-center justify-center p-6 md:p-8 relative overflow-hidden group/image shrink-0">
                         <div class="absolute inset-0 thumb-tetris bg-cover bg-center opacity-100 transition duration-500"></div>
                         <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
-                            <i class="fas fa-cubes-stacked text-7xl text-primary animate-pulse-slow"></i>
-                            <i class="fas fa-gamepad text-5xl text-white absolute -bottom-3 -right-3 drop-shadow-lg"></i>
+                            <i class="fas fa-cubes-stacked text-6xl md:text-7xl text-primary animate-pulse-slow"></i>
+                            <i class="fas fa-gamepad text-4xl md:text-5xl text-white absolute -bottom-3 -right-3 drop-shadow-lg"></i>
                         </div>
                     </div>
 
                     <!-- Info -->
-                    <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
+                    <div class="project-info w-full md:w-[55%] p-5 sm:p-7 md:p-10 flex flex-col justify-center">
                         <div class="flex items-center gap-2 mb-3">
                             <span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">
                                 Classic Game / Algorithms
@@ -572,7 +865,7 @@
                             Tetris Game
                         </h3>
 
-                        <p class="text-slate-400 text-sm sm:text-base mb-6 leading-relaxed">
+                        <p class="text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
                             Tái hiện tựa game xếp gạch kinh điển bằng Unity Engine. Tập trung xử lý logic Grid System ma trận 2D, thuật toán xoay khối gạch và tối ưu WebGL Build chạy trực tiếp trên trình duyệt.
                         </p>
 
@@ -590,7 +883,7 @@
                         <!-- Key Highlights -->
                         <div class="mb-8">
                             <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Điểm nổi bật</h4>
-                            <ul class="text-slate-400 text-xs sm:text-sm space-y-2 list-disc list-inside">
+                            <ul class="text-slate-300 text-xs sm:text-sm space-y-2 list-disc list-inside">
                                 <li><strong>Hệ thống Grid:</strong> Ánh xạ tọa độ không gian thực kiểm soát va chạm (Collision Detection) chính xác.</li>
                                 <li><strong>Tối ưu thuật toán:</strong> Xây dựng Rotation Matrix xoay khối, Spawner ngẫu nhiên và quét xóa hàng hiệu năng cao.</li>
                                 <li><strong>Game State Machine:</strong> Quản lý trạng thái luồng game chặt chẽ, mượt mà trên nền tảng WebGL.</li>
@@ -598,13 +891,13 @@
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="flex flex-wrap gap-3 mt-auto">
+                        <div class="flex flex-wrap gap-3 mt-auto pt-2">
                             <a href="https://ngodkhoi.itch.io/tetris-game" target="_blank" rel="noopener noreferrer"
-                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
+                                class="project-action-btn touch-target flex-1 min-w-[130px] min-h-[44px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
                                 <i class="fas fa-play"></i> Chơi Trên Itch.io
                             </a>
                             <a href="https://github.com/NgoDKhoi/Tetris-Game.git" target="_blank" rel="noopener noreferrer"
-                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
+                                class="project-action-btn touch-target flex-1 min-w-[130px] min-h-[44px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
                                 <i class="fab fa-github"></i> Mã Nguồn
                             </a>
                         </div>
@@ -669,13 +962,13 @@
             </div>
 
             <!-- Resume Download Box -->
-            <div class="mt-10 p-6 bg-card/60 border border-slate-700/80 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 max-w-3xl mx-auto">
+            <div class="mt-10 p-5 sm:p-6 bg-card/60 border border-slate-700/80 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 max-w-3xl mx-auto">
                 <div class="text-center sm:text-left">
                     <h4 class="text-white font-semibold text-base mb-1">Cần xem hồ sơ chi tiết?</h4>
                     <p class="text-slate-400 text-xs sm:text-sm">Tải bản CV định dạng PDF tóm tắt lộ trình học tập, dự án và kỹ năng kỹ thuật.</p>
                 </div>
                 <a href="files/CV_NgoDinhKhoi.pdf" target="_blank" rel="noopener noreferrer"
-                    class="shrink-0 bg-primary hover:bg-primaryHover text-white px-6 py-2.5 rounded-xl font-medium text-sm transition shadow-md shadow-primary/25 inline-flex items-center gap-2">
+                    class="contact-cv-btn touch-target w-full sm:w-auto shrink-0 bg-primary hover:bg-primaryHover text-white min-h-[44px] px-6 py-3 rounded-xl font-medium text-sm transition shadow-md shadow-primary/25 inline-flex items-center justify-center gap-2">
                     <i class="fas fa-file-pdf"></i> Tải CV (PDF)
                 </a>
             </div>
@@ -693,38 +986,83 @@
 
     <!-- Back to Top Button -->
     <button id="back-to-top" type="button" aria-label="Back to top"
-        class="fixed bottom-6 right-6 z-40 bg-card border border-slate-700 hover:border-primary text-primary w-11 h-11 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-primary hover:text-white">
+        class="touch-target fixed bottom-6 right-6 z-40 bg-card border border-slate-700 hover:border-primary text-primary w-11 h-11 min-w-[44px] min-h-[44px] rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-primary hover:text-white">
         <i class="fas fa-arrow-up text-sm"></i>
     </button>
 
     <!-- Interactive Scripts: Mobile menu, Project Filters, Back to Top -->
     <script>
-        // 1. Mobile Menu Toggle
+        // 1. Mobile Menu Toggle with Outside-Click & Smooth State
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
+        function openMenu() {
+            if (!mobileMenu) return;
+            mobileMenu.classList.remove('hidden');
+            if (menuIcon) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+            if (mobileMenuBtn) {
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        function closeMenu() {
+            if (!mobileMenu) return;
+            mobileMenu.classList.add('hidden');
+            if (menuIcon) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+            if (mobileMenuBtn) {
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+
         if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const isHidden = mobileMenu.classList.contains('hidden');
                 if (isHidden) {
-                    mobileMenu.classList.remove('hidden');
-                    menuIcon.classList.remove('fa-bars');
-                    menuIcon.classList.add('fa-times');
+                    openMenu();
                 } else {
-                    mobileMenu.classList.add('hidden');
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
+                    closeMenu();
                 }
             });
 
+            // Close when clicking any nav link
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
+                    closeMenu();
                 });
+            });
+
+            // Close when clicking or tapping outside
+            const handleOutsideDismiss = (e) => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                        closeMenu();
+                    }
+                }
+            };
+            document.addEventListener('click', handleOutsideDismiss);
+            document.addEventListener('touchend', handleOutsideDismiss, { passive: true });
+
+            // Close when pressing Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                    closeMenu();
+                }
+            });
+
+            // Close when resizing to desktop view
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
+                    closeMenu();
+                }
             });
         }
 

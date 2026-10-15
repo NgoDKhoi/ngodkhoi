@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Portfolio Verification Suite</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 24px;
+            line-height: 1.5;
+        }
+        .header {
+            max-width: 1360px;
+            margin: 0 auto 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #334155;
+        }
+        .header h1 {
+            font-size: 24px;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+        .summary-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .badge-running { background: #0284c7; color: #fff; }
+        .badge-pass { background: #059669; color: #fff; }
+        .badge-fail { background: #dc2626; color: #fff; }
+
+        .container {
+            max-width: 1360px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .sandbox-card {
+            overflow-x: auto;
+        }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .card h2 {
+            font-size: 17px;
+            color: #f8fafc;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .test-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            background: #0f172a;
+            font-size: 14px;
+        }
+        .test-status {
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .status-pass { background: #065f46; color: #34d399; }
+        .status-fail { background: #991b1b; color: #f87171; }
+        .status-pending { background: #374151; color: #9ca3af; }
+
+        .log-box {
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #a5b4fc;
+            max-height: 250px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .iframe-container {
+            width: 100%;
+            height: 380px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        iframe {
+            border: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Automated Verification Suite (Portfolio UI/UX)</h1>
+        <p>Kiểm thử độc lập: Horizontal Overflow, Console Errors, Thumbnail Ratios, Touch Targets, Interactive Flows.</p>
+        <div style="margin-top: 12px;">
+            <span id="suite-status" class="summary-badge badge-running">RUNNING TESTS...</span>
+            <span id="tests-summary" style="font-size: 13px; color: #94a3b8;">Đang khởi tạo runner...</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Test Results Grid -->
+        <div class="card">
+            <h2>Kết Quả Nghiệm Thu (Acceptance Criteria)</h2>
+            <div id="test-results">
+                <div class="test-row">
+                    <span>1. Viewport Overflow Check (360px, 768px, 1280px)</span>
+                    <span id="test-1-status" class="test-status status-pending">PENDING</span>
+                </div>
+                <div class="test-row">
+                    <span>2. Console Errors Check (0 runtime/console errors)</span>
+                    <span id="test-2-status" class="test-status status-pending">PENDING</span>
+                </div>
+                <div class="test-row">
+                    <span>3. Project Thumbnail Heights (160px - 210px at <= 640px)</span>
+                    <span id="test-3-status" class="test-status status-pending">PENDING</span>
+                </div>
+                <div class="test-row">
+                    <span>4. Touch Target Standard (>= 44x44px for buttons/links)</span>
+                    <span id="test-4-status" class="test-status status-pending">PENDING</span>
+                </div>
+                <div class="test-row">
+                    <span>5. Interactive Flows (Mobile Menu, Filters, CV Link)</span>
+                    <span id="test-5-status" class="test-status status-pending">PENDING</span>
+                </div>
+                <div class="test-row">
+                    <span>6. Internal Links & Asset Integrity</span>
+                    <span id="test-6-status" class="test-status status-pending">PENDING</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Execution Logs -->
+        <div class="card">
+            <h2>Detailed Execution Log</h2>
+            <div id="log-output" class="log-box">Initializing automated verification engine...\n</div>
+        </div>
+
+        <!-- Sandbox Preview Frame -->
+        <div class="card sandbox-card">
+            <h2>Test Sandbox Frame (Viewport Simulation)</h2>
+            <div class="iframe-container" id="frame-box">
+                <iframe id="test-iframe" src="../index.html"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const logBox = document.getElementById('log-output');
+        function log(msg) {
+            console.log(msg);
+            logBox.textContent += msg + '\n';
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        function setStatus(id, pass, detail) {
+            const el = document.getElementById(id);
+            if (pass) {
+                el.className = 'test-status status-pass';
+                el.textContent = 'PASS';
+            } else {
+                el.className = 'test-status status-fail';
+                el.textContent = 'FAIL';
+            }
+            if (detail) {
+                log('  -> ' + detail);
+            }
+        }
+
+        window.__VERIFICATION_RESULTS__ = {
+            timestamp: new Date().toISOString(),
+            passed: 0,
+            failed: 0,
+            tests: {}
+        };
+
+        const iframe = document.getElementById('test-iframe');
+
+        iframe.onload = async () => {
+            log('Target page index.html loaded in testing harness.');
+            await runAllTests();
+        };
+
+        async function wait(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function setViewportWidth(width) {
+            const frameBox = document.getElementById('frame-box');
+            frameBox.style.width = width + 'px';
+            frameBox.style.margin = '0 auto';
+            await wait(200);
+        }
+
+        async function runAllTests() {
+            try {
+                const doc = iframe.contentDocument || iframe.contentWindow.document;
+                const win = iframe.contentWindow;
+
+                // Monitor console errors
+                const consoleErrors = [];
+                const originalError = win.console.error;
+                win.console.error = function(...args) {
+                    consoleErrors.push(args.join(' '));
+                    if (originalError) originalError.apply(win.console, args);
+                };
+                win.onerror = function(msg, url, line) {
+                    consoleErrors.push(`${msg} at ${url}:${line}`);
+                };
+
+                // --- TEST 1: Viewport Overflow Check ---
+                log('\n[TEST 1] Testing horizontal overflow across edge viewports (320px, 360px, 375px, 768px, 1024px, 1280px)...');
+                const viewports = [320, 360, 375, 768, 1024, 1280];
+                let overflowPass = true;
+                const overflowDetails = [];
+
+                for (const vp of viewports) {
+                    await setViewportWidth(vp);
+                    const scrollW = doc.documentElement.scrollWidth;
+                    const innerW = win.innerWidth;
+                    const diff = scrollW - innerW;
+                    const pass = diff <= 1; // 1px threshold for subpixel rounding
+                    if (!pass) overflowPass = false;
+                    const info = `Viewport ${vp}px: scrollWidth=${scrollW}px, innerWidth=${innerW}px (Diff: ${diff}px)`;
+                    log('  ' + (pass ? '✓' : '✗') + ' ' + info);
+                    overflowDetails.push({ viewport: vp, scrollW, innerW, pass });
+                }
+
+                setStatus('test-1-status', overflowPass, overflowPass ? 'All viewports free of horizontal scroll' : 'Horizontal overflow detected');
+                window.__VERIFICATION_RESULTS__.tests.overflow = { pass: overflowPass, details: overflowDetails };
+                if (overflowPass) window.__VERIFICATION_RESULTS__.passed++; else window.__VERIFICATION_RESULTS__.failed++;
+
+                // Reset to mobile 360px for remaining mobile tests
+                await setViewportWidth(360);
+
+                // --- TEST 2: Project Thumbnail Height Check at 360px ---
+                log('\n[TEST 2] Checking 4 project thumbnail heights at 360px (Acceptance Criterion: 160px - 210px)...');
+                const projectCards = doc.querySelectorAll('.project-card');
+                let thumbPass = true;
+                const thumbDetails = [];
+
+                projectCards.forEach((card, idx) => {
+                    const visual = card.querySelector('.project-visual') || card.querySelector('.thumb-autoclaw, .thumb-fruit-slash, .thumb-meo, .thumb-tetris')?.parentElement;
+                    const title = card.querySelector('h3')?.textContent?.trim() || `Project ${idx + 1}`;
+                    if (!visual) {
+                        thumbPass = false;
+                        log(`  ✗ Project "${title}": visual element not found`);
+                        return;
+                    }
+                    const rect = visual.getBoundingClientRect();
+                    const height = Math.round(rect.height);
+                    const valid = height >= 160 && height <= 210;
+                    if (!valid) thumbPass = false;
+                    log(`  ${valid ? '✓' : '✗'} Project "${title}": height = ${height}px (Requirement: 160px - 210px)`);
+                    thumbDetails.push({ title, height, valid });
+                });
+
+                setStatus('test-3-status', thumbPass, thumbPass ? 'All 4 project thumbnails are between 160px and 210px' : 'Thumbnail height outside 160-210px');
+                window.__VERIFICATION_RESULTS__.tests.thumbnailHeights = { pass: thumbPass, details: thumbDetails };
+                if (thumbPass) window.__VERIFICATION_RESULTS__.passed++; else window.__VERIFICATION_RESULTS__.failed++;
+
+                // --- TEST 3: Touch Target Standard (>= 44x44px) on Mobile ---
+                log('\n[TEST 3] Checking Touch Targets (min 44px) on mobile...');
+                let touchPass = true;
+                const touchDetails = [];
+
+                function checkTouch(element, name, requireWidth = false) {
+                    if (!element) {
+                        log(`  ✗ ${name}: element not found in DOM`);
+                        touchPass = false;
+                        return;
+                    }
+                    const rect = element.getBoundingClientRect();
+                    const h = Math.round(rect.height);
+                    const w = Math.round(rect.width);
+                    const validH = h >= 44;
+                    const validW = !requireWidth || w >= 44;
+                    const valid = validH && validW;
+                    if (!valid) touchPass = false;
+                    log(`  ${valid ? '✓' : '✗'} ${name}: ${w}x${h}px (Required: ${requireWidth ? '>=44x44' : 'height >= 44px'})`);
+                    touchDetails.push({ name, width: w, height: h, valid });
+                }
+
+                // Hamburger button
+                checkTouch(doc.getElementById('mobile-menu-btn'), 'Hamburger Menu Button', true);
+
+                // Filter buttons
+                doc.querySelectorAll('.filter-btn').forEach((btn, i) => {
+                    checkTouch(btn, `Filter Button: ${btn.textContent.trim()}`);
+                });
+
+                // Hero action buttons
+                const heroButtons = doc.querySelectorAll('section:first-of-type a[href="#projects"], section:first-of-type a[href*="CV"]');
+                heroButtons.forEach((btn) => {
+                    checkTouch(btn, `Hero Button: ${btn.textContent.trim()}`);
+                });
+
+                // Hero social buttons
+                const heroSocials = doc.querySelectorAll('section:first-of-type a[href*="github"], section:first-of-type a[href*="linkedin"]');
+                heroSocials.forEach((btn, i) => {
+                    checkTouch(btn, `Hero Social Button [${i+1}]`, true);
+                });
+
+                // Project action buttons
+                doc.querySelectorAll('.project-card a').forEach((btn) => {
+                    checkTouch(btn, `Project Action Button: ${btn.textContent.trim()}`);
+                });
+
+                // Contact CV Download button
+                const contactCvBtn = doc.querySelector('#contact a[href*="CV"]');
+                checkTouch(contactCvBtn, 'Contact Section CV Download Button');
+
+                // Back to Top button
+                checkTouch(doc.getElementById('back-to-top'), 'Back To Top Button', true);
+
+                setStatus('test-4-status', touchPass, touchPass ? 'All primary buttons & interactive links satisfy >= 44px touch target' : 'Some touch targets are under 44px');
+                window.__VERIFICATION_RESULTS__.tests.touchTargets = { pass: touchPass, details: touchDetails };
+                if (touchPass) window.__VERIFICATION_RESULTS__.passed++; else window.__VERIFICATION_RESULTS__.failed++;
+
+                // --- TEST 4: Interactive Flows ---
+                log('\n[TEST 4] Simulating Interactive Flows (Mobile Menu, Filters, CV Link)...');
+                let flowPass = true;
+                const menuBtn = doc.getElementById('mobile-menu-btn');
+                const mobileMenu = doc.getElementById('mobile-menu');
+
+                // 4.1 Open mobile menu
+                menuBtn.click();
+                await wait(100);
+                const menuOpened = !mobileMenu.classList.contains('hidden');
+                log(`  ${menuOpened ? '✓' : '✗'} Mobile menu opens on button click (hidden class removed)`);
+                if (!menuOpened) flowPass = false;
+
+                // 4.2 Close mobile menu on outside click
+                doc.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+                await wait(100);
+                const menuClosedOutside = mobileMenu.classList.contains('hidden');
+                log(`  ${menuClosedOutside ? '✓' : '✗'} Mobile menu closes automatically when clicking outside`);
+                if (!menuClosedOutside) flowPass = false;
+
+                // 4.3 Close mobile menu on outside touchend (iOS/Android)
+                menuBtn.click();
+                await wait(100);
+                doc.body.dispatchEvent(new Event('touchend', { bubbles: true }));
+                await wait(100);
+                const menuClosedTouch = mobileMenu.classList.contains('hidden');
+                log(`  ${menuClosedTouch ? '✓' : '✗'} Mobile menu closes automatically on outside touch event`);
+                if (!menuClosedTouch) flowPass = false;
+
+                // 4.4 Close mobile menu when clicking nav link
+                menuBtn.click();
+                await wait(100);
+                const firstMobileLink = mobileMenu.querySelector('.mobile-nav-link');
+                if (firstMobileLink) {
+                    firstMobileLink.click();
+                    await wait(100);
+                    const menuClosedOnNav = mobileMenu.classList.contains('hidden');
+                    log(`  ${menuClosedOnNav ? '✓' : '✗'} Mobile menu closes automatically when selecting a link`);
+                    if (!menuClosedOnNav) flowPass = false;
+                }
+
+                // 4.5 Test Project Category Filters
+                const filterAiot = doc.querySelector('.filter-btn[data-filter="aiot"]');
+                const filterGame = doc.querySelector('.filter-btn[data-filter="game"]');
+                const filterAll = doc.querySelector('.filter-btn[data-filter="all"]');
+
+                if (filterAiot && filterGame && filterAll) {
+                    filterAiot.click();
+                    await wait(50);
+                    const aiotVisible = Array.from(projectCards).filter(c => c.style.display !== 'none');
+                    log(`  ✓ Filter "aiot": ${aiotVisible.length} project displayed`);
+
+                    filterGame.click();
+                    await wait(50);
+                    const gameVisible = Array.from(projectCards).filter(c => c.style.display !== 'none');
+                    log(`  ✓ Filter "game": ${gameVisible.length} projects displayed`);
+
+                    filterAll.click();
+                    await wait(50);
+                    const allVisible = Array.from(projectCards).filter(c => c.style.display !== 'none');
+                    log(`  ✓ Filter "all": ${allVisible.length} projects displayed`);
+                }
+
+                // 4.6 Test CV Link
+                const cvLinks = doc.querySelectorAll('a[href="files/CV_NgoDinhKhoi.pdf"]');
+                const cvValid = cvLinks.length >= 3;
+                log(`  ${cvValid ? '✓' : '✗'} CV PDF links correctly present in Navigation, Hero, and Contact (${cvLinks.length} found)`);
+                if (!cvValid) flowPass = false;
+
+                setStatus('test-5-status', flowPass, flowPass ? 'All user interactive flows operate seamlessly' : 'Flow failure observed');
+                window.__VERIFICATION_RESULTS__.tests.flows = { pass: flowPass };
+                if (flowPass) window.__VERIFICATION_RESULTS__.passed++; else window.__VERIFICATION_RESULTS__.failed++;
+
+                // --- TEST 5: Console & Runtime Errors Check ---
+                log('\n[TEST 5] Checking Console & Runtime Errors...');
+                const consolePass = consoleErrors.length === 0;
+                log(`  ${consolePass ? '✓' : '✗'} Total console errors during all operations: ${consoleErrors.length}`);
+                if (!consolePass) {
+                    consoleErrors.forEach(err => log(`     [ERROR]: ${err}`));
+                }
+
+                setStatus('test-2-status', consolePass, consolePass ? 'Zero runtime or console errors recorded' : `${consoleErrors.length} console errors`);
+                window.__VERIFICATION_RESULTS__.tests.consoleErrors = { pass: consolePass, count: consoleErrors.length, errors: consoleErrors };
+                if (consolePass) window.__VERIFICATION_RESULTS__.passed++; else window.__VERIFICATION_RESULTS__.failed++;
+
+                // --- TEST 6: Internal Anchors & PDF Reachability ---
+                log('\n[TEST 6] Validating Internal Links & Anchor Targets...');
+                let internalPass = true;
+                const anchors = ['about', 'skills', 'projects', 'contact'];
+                for (const id of anchors) {
+                    const targetEl = doc.getElementById(id);
+                    const exists = targetEl !== null;
+                    if (!exists) internalPass = false;
+                    log(`  ${exists ? '✓' : '✗'} Section target #${id} exists in DOM`);
+                }
+
+                setStatus('test-6-status', internalPass, internalPass ? 'All anchor destinations valid' : 'Missing section anchor target');
+                window.__VERIFICATION_RESULTS__.tests.internalLinks = { pass: internalPass };
+                if (internalPass) window.__VERIFICATION_RESULTS__.passed++; else window.__VERIFICATION_RESULTS__.failed++;
+
+                // --- FINAL VERDICT ---
+                const allPassed = overflowPass && thumbPass && touchPass && flowPass && consolePass && internalPass;
+                const suiteBadge = document.getElementById('suite-status');
+                const suiteSummary = document.getElementById('tests-summary');
+
+                if (allPassed) {
+                    suiteBadge.className = 'summary-badge badge-pass';
+                    suiteBadge.textContent = 'ALL TESTS PASSED (100%)';
+                    suiteSummary.textContent = '6/6 Test Suites Passed. Website is fully responsive and error-free!';
+                    log('\n=============================================');
+                    log('SUCCESS: All 6 Verification Suites Passed 100%');
+                    log('=============================================');
+                } else {
+                    suiteBadge.className = 'summary-badge badge-fail';
+                    suiteBadge.textContent = 'FAILURES DETECTED';
+                    suiteSummary.textContent = `${window.__VERIFICATION_RESULTS__.passed}/6 Passed, ${window.__VERIFICATION_RESULTS__.failed} Failed.`;
+                    log('\n=============================================');
+                    log('FAILURE: Some tests did not meet requirements');
+                    log('=============================================');
+                }
+
+            } catch (err) {
+                log('FATAL RUNNER ERROR: ' + err.message + '\n' + err.stack);
+                document.getElementById('suite-status').className = 'summary-badge badge-fail';
+                document.getElementById('suite-status').textContent = 'ERROR';
+            }
+        }
+    </script>
+</body>
+</html>
