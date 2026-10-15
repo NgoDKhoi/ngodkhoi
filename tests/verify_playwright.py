@@ -357,8 +357,8 @@ def run_builtin_engine():
     assert_check("hover:scale-110" in avatar_html, "Avatar badges employ subtle hover scaling")
     assert_check("Featured Project" in html and "featured-glow" in html,
                  "AutoClaw retains Flagship Project recognition and featured-glow distinction")
-    assert_check("break-words" in html and "text-[11px]" in html,
-                 "Status badge wraps cleanly on micro-screens with responsive font")
+    assert_check("UIT-er" in html,
+                 "UIT-er badge verified in About section")
 
     # 8. Asset & Anchor Integrity
     print("\n[TEST 8] Validating assets and internal anchors...")

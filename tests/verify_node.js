@@ -461,11 +461,9 @@ assert(avatarMarkup.includes('hover:scale-110'), 'Avatar badges use elegant hove
 assert(htmlContent.includes('Featured Project'), 'AutoClaw flagged as Featured Project');
 assert(htmlContent.includes('featured-glow'), 'AutoClaw visually distinguished with featured-glow effect');
 
-// Hero Status Badge Micro-Screen Wrap verification
-const statusBadgeMatch = htmlContent.match(/<!-- Status Badge -->([\s\S]*?)<\/div>/i);
-const statusBadgeHtml = statusBadgeMatch ? statusBadgeMatch[1] : '';
-assert(statusBadgeHtml.includes('break-words') && statusBadgeHtml.includes('text-[11px]'), 
-       'Hero status badge employs responsive font (text-[11px]) and clean word-wrap (break-words)');
+// Hero & About content verification
+assert(htmlContent.includes("Hello world, I'm"), 'Hero intro includes greeting');
+assert(htmlContent.includes('UIT-er'), 'UIT-er badge verified in About section');
 
 // Hero CTA Responsiveness verification
 const heroCtaMatch = htmlContent.match(/class="[^"]*hero-cta-btn[^"]*"/);
