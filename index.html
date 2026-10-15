@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DKhoi - Portfolio</title>
+    <title>Ngô Đình Khôi - Portfolio</title>
     <link rel="icon" href="images/favicon.png" type="image/png">
 
-    <!-- Preconnect to external domains (giảm DNS lookup + TLS handshake) -->
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Google Fonts (non-blocking link thay vì @import) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome CSS (~90KB thay vì JS ~1.4MB) -->
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- TailwindCSS (pre-built) -->
@@ -26,98 +26,115 @@
 
         /* Gradient xanh lá cho chữ */
         .gradient-text {
-            background: linear-gradient(to right, #34d399, #10b981);
+            background: linear-gradient(135deg, #34d399, #10b981);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         /* Hiệu ứng Glow nhẹ */
         .glow-effect {
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+        }
+
+        /* Tab filter active */
+        .filter-btn.active {
+            background-color: #10b981;
+            color: #ffffff;
+            border-color: #10b981;
         }
     </style>
 </head>
 
-<body class="bg-dark text-slate-300 selection:bg-primary selection:text-white">
+<body class="bg-dark text-slate-300 selection:bg-primary selection:text-white antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-sm border-b border-slate-700/50">
+    <nav class="fixed w-full z-50 bg-dark/95 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 font-bold text-xl text-white tracking-wider">
+                <!-- Logo -->
+                <a href="#" class="flex-shrink-0 font-bold text-xl text-white tracking-wider hover:opacity-90 transition">
                     <span class="text-primary">&lt;</span> DKhoi <span class="text-primary">/&gt;</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-slate-300 hover:text-primary transition font-medium text-sm">Giới thiệu</a>
+                    <a href="#skills" class="text-slate-300 hover:text-primary transition font-medium text-sm">Kỹ năng</a>
+                    <a href="#projects" class="text-slate-300 hover:text-primary transition font-medium text-sm">Dự án</a>
+                    <a href="#contact" class="border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-lg font-medium text-sm transition duration-300 shadow-sm shadow-primary/20">Liên hệ</a>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about" class="hover:text-primary transition px-3 py-2 rounded-md font-medium">Giới
-                            thiệu</a>
-                        <a href="#skills" class="hover:text-primary transition px-3 py-2 rounded-md font-medium">Kỹ
-                            năng</a>
-                        <a href="#projects" class="hover:text-primary transition px-3 py-2 rounded-md font-medium">Dự
-                            án</a>
-                        <a href="#contact"
-                            class="border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-md font-medium transition duration-300">Liên
-                            hệ</a>
-                    </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" aria-label="Toggle menu" class="text-slate-400 hover:text-white focus:outline-none p-2 rounded-lg">
+                        <i id="menu-icon" class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
             </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark/95 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">Giới thiệu</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">Kỹ năng</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-primary hover:bg-slate-800/50">Dự án</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-primary border border-primary/40 text-center hover:bg-primary hover:text-white">Liên hệ</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
-        <!-- Background decoration -->
-        <div class="absolute top-20 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute bottom-20 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
+    <section class="min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden">
+        <!-- Background decoration glow -->
+        <div class="absolute top-20 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-16 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center">
-            <div class="w-full md:w-1/2 pr-0 md:pr-10 text-center md:text-left mt-10 md:mt-0">
-                <p class="text-primary font-mono mb-3 tracking-wide">Hello world, I'm</p>
-                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
-                    Ngo Dinh Khoi
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center gap-12">
+            <!-- Left Column: Intro -->
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <p class="text-primary font-mono text-sm uppercase tracking-widest mb-3">Hello world, I'm</p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">
+                    Ngô Đình Khôi
                 </h1>
-                <!-- Subtitle  -->
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-slate-400">
-                    <span class="gradient-text">Aspiring Software Developer</span>
+                <!-- Subtitle -->
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 text-slate-400">
+                    <span class="gradient-text">Software & AIoT Developer</span>
                 </h2>
-                <!-- Mô tả -->
-                <p class="text-slate-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-                    Một sinh viên chuyên ngành Mạng máy tính và Truyền thông tại UIT, với niềm đam mê mãnh liệt trở thành Software Developer. Tôi yêu thích việc kiến trúc hệ thống, tối ưu hóa thuật toán và xây dựng các sản phẩm phần mềm mang lại giá trị thực tiễn.
+                <!-- Description -->
+                <p class="text-slate-400 text-base md:text-lg mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                    Sinh viên chuyên ngành Mạng máy tính và Truyền thông tại UIT (ĐHQG TP.HCM). Đam mê lập trình hệ thống, phát triển ứng dụng thông minh, tối ưu thuật toán và xây dựng các sản phẩm công nghệ thực tiễn (Edge AI, Robotics, Software).
                 </p>
-                <div class="flex justify-center md:justify-start space-x-4 mt-8">
+
+                <!-- Actions -->
+                <div class="flex flex-wrap justify-center md:justify-start items-center gap-4">
                     <a href="#projects"
-                        class="bg-primary hover:bg-primaryHover text-white px-8 py-3 rounded-lg font-medium transition shadow-lg shadow-primary/25 inline-flex items-center justify-center text-center">
-                        My Project
+                        class="bg-primary hover:bg-primaryHover text-white px-7 py-3 rounded-xl font-medium transition shadow-lg shadow-primary/25 inline-flex items-center gap-2">
+                        <i class="fas fa-folder-open text-sm"></i> Xem Dự Án
                     </a>
-                    <a href="https://github.com/NgoDKhoi" target="_blank"
-                        class="border border-slate-600 hover:border-primary hover:text-primary text-slate-400 px-4 py-3 text-2xl rounded-lg transition">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/NgoDKhoi" target="_blank" rel="noopener noreferrer"
+                        class="border border-slate-700 hover:border-primary hover:text-primary text-slate-300 px-4 py-3 rounded-xl transition inline-flex items-center gap-2"
+                        title="GitHub Profile">
+                        <i class="fab fa-github text-xl"></i>
                     </a>
-                    <!-- <a href="https://facebook.com/ngo.d.khoi.2024" target="_blank"
-                        class="border border-slate-600 hover:border-[#1877f2] hover:text-[#1877f2] text-slate-400 px-4 py-3 text-2xl rounded-lg transition">
-                        <i class="fab fa-facebook"></i>
-                    </a> -->
+                    <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank" rel="noopener noreferrer"
+                        class="border border-slate-700 hover:border-[#0077b5] hover:text-[#0077b5] text-slate-300 px-4 py-3 rounded-xl transition inline-flex items-center gap-2"
+                        title="LinkedIn Profile">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
                 </div>
             </div>
 
-            <!-- Avatar -->
+            <!-- Right Column: Avatar -->
             <div class="w-full md:w-1/2 flex justify-center relative">
-                <div class="relative w-64 h-64 md:w-80 md:h-80">
-                    <div
-                        class="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 animate-[spin_10s_linear_infinite]">
-                    </div>
-                    <div
-                        class="absolute inset-0 rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl shadow-primary/20 glow-effect">
-                        <img src="images/avatar.webp" alt="Ngô Đình Khôi" loading="eager"
-                            class="w-full h-full object-cover">
+                <div class="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80">
+                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 animate-[spin_12s_linear_infinite]"></div>
+                    <div class="absolute inset-2 rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl shadow-primary/20 glow-effect">
+                        <img src="images/avatar.webp" alt="Ngô Đình Khôi" loading="eager" class="w-full h-full object-cover">
                     </div>
                     <!-- Tech badges floating -->
-                    <div
-                        class="absolute -bottom-4 -right-4 bg-card border border-slate-700 p-3 rounded-lg shadow-xl animate-bounce">
+                    <div class="absolute -bottom-3 -right-3 bg-card border border-slate-700 p-3 rounded-xl shadow-xl animate-bounce" title="Robotics & Hardware">
                         <i class="fas fa-microchip text-2xl text-primary"></i>
                     </div>
-                    <div
-                        class="absolute top-10 -left-8 bg-card border border-slate-700 p-3 rounded-lg shadow-xl animate-pulse">
+                    <div class="absolute top-8 -left-5 bg-card border border-slate-700 p-3 rounded-xl shadow-xl animate-pulse" title="Networks & Systems">
                         <i class="fas fa-network-wired text-2xl text-primary"></i>
                     </div>
                 </div>
@@ -126,27 +143,24 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-card/30 border-y border-slate-800/50">
+    <section id="about" class="py-20 bg-card/20 border-y border-slate-800/60">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-white mb-8 inline-block relative">
+            <h2 class="text-3xl font-bold text-white mb-6 inline-block relative">
                 Về Tôi
                 <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary rounded-full"></span>
             </h2>
-            <!-- Content -->
-            <p class="text-lg text-slate-300 leading-relaxed mb-6">
-                Tôi hiện là sinh viên năm 2 chuyên ngành <strong>Mạng máy tính và Truyền thông</strong> (Khóa 2024) tại trường <strong>Đại học Công nghệ Thông tin (UIT) - ĐHQG TP.HCM</strong>, định hướng trở thành một <strong>Software Developer</strong> chuyên nghiệp. Với tư duy kỹ thuật độc lập cùng khả năng tự học vững vàng, tôi thích đi sâu nghiên cứu kiến trúc phần mềm, phát triển backend và tối ưu hóa hệ thống để giải quyết những bài toán thực tế. Bên cạnh học tập, tôi có sở thích đặc biệt với điện ảnh – nơi tôi tìm kiếm cảm hứng sáng tạo và rèn luyện tư duy phân tích logic. Trong môi trường tập thể, tôi luôn cố gắng học hỏi, hoàn thành tốt trách nhiệm của một thành viên Ban Chấp hành Chi hội và từng bước hoàn thiện các kỹ năng giao tiếp bổ trợ cho công việc.
+            <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-3xl mx-auto">
+                Tôi là sinh viên chuyên ngành <strong>Mạng máy tính và Truyền thông dữ liệu</strong> (Khóa 2024) tại trường <strong>Đại học Công nghệ Thông tin (UIT) - ĐHQG TP.HCM</strong>. Với tư duy kỹ thuật độc lập cùng khả năng tự học vững vàng, tôi thích đi sâu nghiên cứu kiến trúc phần mềm, hệ thống nhúng thông minh (AIoT / Edge AI) và tối ưu hóa hiệu năng để tạo ra sản phẩm hoàn thiện.
             </p>
-            <!-- Badge -->
+            <!-- Badges -->
             <div class="flex flex-wrap justify-center gap-4">
-                <div
-                    class="inline-flex items-center bg-primary/10 rounded-lg px-6 py-3 border border-primary/20 hover:border-primary/50 transition cursor-default">
-                    <i class="fas fa-users text-primary mr-3"></i>
-                    <span class="font-medium text-primary">Ủy viên Ban Chấp Hành Chi hội MMTT2024.2</span>
+                <div class="inline-flex items-center bg-primary/10 rounded-xl px-5 py-2.5 border border-primary/20 hover:border-primary/50 transition cursor-default text-sm">
+                    <i class="fas fa-users text-primary mr-2.5"></i>
+                    <span class="font-medium text-primary">Ủy viên BCH Chi hội MMTT2024.2</span>
                 </div>
-                <div
-                    class="inline-flex items-center bg-primary/10 rounded-lg px-6 py-3 border border-primary/20 hover:border-primary/50 transition cursor-default">
-                    <i class="fas fa-graduation-cap text-primary mr-3"></i>
-                    <span class="font-medium text-primary">UIT-er</span>
+                <div class="inline-flex items-center bg-primary/10 rounded-xl px-5 py-2.5 border border-primary/20 hover:border-primary/50 transition cursor-default text-sm">
+                    <i class="fas fa-graduation-cap text-primary mr-2.5"></i>
+                    <span class="font-medium text-primary">Sinh viên UIT - ĐHQG TP.HCM</span>
                 </div>
             </div>
         </div>
@@ -156,65 +170,53 @@
     <section id="skills" class="py-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white">Kỹ Năng Chuyên Môn</h2>
-                <p class="text-slate-400 mt-4">Bộ công cụ tôi sử dụng để xây dựng lên dự án</p>
+                <h2 class="text-3xl font-bold text-white">Kỹ Năng Kỹ Thuật</h2>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">Các ngôn ngữ, công nghệ và công cụ tôi sử dụng để xây dựng sản phẩm</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Programming Languages -->
-                <div
-                    class="bg-card p-8 rounded-2xl border border-slate-700 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition duration-300 group">
-                    <div
-                        class="w-14 h-14 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition">
-                        <i class="fas fa-code text-primary text-3xl"></i>
+                <!-- 1: Programming Languages -->
+                <div class="bg-card p-8 rounded-2xl border border-slate-700/80 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition duration-300 group">
+                    <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition">
+                        <i class="fas fa-code text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Programming Languages </h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> C / C++</li>
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Python</li>
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> C#</li>
+                    <h3 class="text-xl font-bold text-white mb-4">Ngôn Ngữ Lập Trình</h3>
+                    <ul class="space-y-3 text-sm sm:text-base">
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> C / C++</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Rust (Tokio / PyO3)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Python</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> C# (.NET Framework)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> JavaScript (WebGL Bridge)</li>
                     </ul>
                 </div>
 
-                <!-- Backend & Database -->
-                <div
-                    class="bg-card p-8 rounded-2xl border border-slate-700 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition duration-300 group">
-                    <div
-                        class="w-14 h-14 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition">
-                        <i class="fas fa-database text-primary text-3xl"></i>
+                <!-- 2: Systems, Backend & DB -->
+                <div class="bg-card p-8 rounded-2xl border border-slate-700/80 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition duration-300 group">
+                    <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition">
+                        <i class="fas fa-server text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Backend & DB</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> .NET Framework</li>
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> SQL Server</li>
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Firebase (Realtime)</li>
-
+                    <h3 class="text-xl font-bold text-white mb-4">Hệ Thống & Backend</h3>
+                    <ul class="space-y-3 text-sm sm:text-base">
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Linux System Programming</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Socket Programming (TCP/UDP)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> SQL Server & Database Design</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Firebase (Auth / Realtime DB)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Computer Vision & MediaPipe</li>
                     </ul>
                 </div>
 
-                <!-- Networking & Tools -->
-                <div
-                    class="bg-card p-8 rounded-2xl border border-slate-700 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition duration-300 group">
-                    <div
-                        class="w-14 h-14 bg-slate-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition">
-                        <i class="fas fa-network-wired text-primary text-3xl"></i>
+                <!-- 3: Hardware, Network & Tools -->
+                <div class="bg-card p-8 rounded-2xl border border-slate-700/80 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition duration-300 group">
+                    <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition">
+                        <i class="fas fa-microchip text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Network & Tools</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Embedded (Arduino, Raspberry Pi)</li>
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Linux & Git/GitHub</li>
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Wireshark & Cisco Packet Tracer</li>
-                        <li class="flex items-center text-slate-300"><i
-                                class="fas fa-check-circle text-primary text-sm mr-3"></i> Computer Networks</li>
+                    <h3 class="text-xl font-bold text-white mb-4">Phần Cứng & Công Cụ</h3>
+                    <ul class="space-y-3 text-sm sm:text-base">
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Raspberry Pi 4 & Arduino</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Linux (Ubuntu) & Git / GitHub</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Wireshark & Cisco Packet Tracer</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Unity Engine (WebGL, 2D/3D)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check-circle text-primary text-xs mr-3"></i> Kiến trúc Mạng Máy Tính (OSI/TCP)</li>
                     </ul>
                 </div>
             </div>
@@ -222,349 +224,341 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-card/30">
+    <section id="projects" class="py-24 bg-card/20 border-t border-slate-800/60">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">Dự Án Tiêu Biểu</h2>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-white">Dự Án Tiêu Biểu</h2>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">Các sản phẩm thực chiến tôi đã xây dựng và phát hành mã nguồn</p>
+            </div>
 
-            <div class="flex flex-col gap-12">
-                <!-- Project 1: AutoClaw - Autonomous AI Robot (NEW - AIoT Project) -->
-                <div
-                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group">
+            <!-- Project Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-14">
+                <button type="button" class="filter-btn active px-5 py-2 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-primary transition" data-filter="all">
+                    Tất cả (4)
+                </button>
+                <button type="button" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-primary transition" data-filter="aiot">
+                    <i class="fas fa-robot mr-1.5 text-xs"></i> AIoT & Robotics (1)
+                </button>
+                <button type="button" class="filter-btn px-5 py-2 rounded-xl text-sm font-medium border border-slate-700 text-slate-300 hover:border-primary transition" data-filter="game">
+                    <i class="fas fa-gamepad mr-1.5 text-xs"></i> Game & WebGL (3)
+                </button>
+            </div>
+
+            <div id="projects-list" class="flex flex-col gap-12">
+                
+                <!-- Project 1: AutoClaw - AI Robot -->
+                <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700/80 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group"
+                     data-category="aiot">
                     <!-- Visual -->
-                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/50 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
-                        <!-- Background image for AutoClaw -->
-                        <div
-                            class="absolute inset-0 bg-[url('../images/projects/autoclaw.webp')] bg-cover bg-center opacity-100 transition duration-500">
-                        </div>
-                        <div
-                            class="absolute top-0 right-0 w-full h-full bg-black/0 group-hover/image:bg-black/80 transition duration-500 z-10">
-                        </div>
-
+                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
+                        <div class="absolute inset-0 bg-[url('../images/projects/autoclaw.webp')] bg-cover bg-center opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
-                            <!-- Icon for AutoClaw -->
-                            <i class="fas fa-robot text-8xl text-primary animate-pulse-slow"></i>
-                            <i
-                                class="fas fa-car-side text-5xl text-white absolute -bottom-4 -right-4 drop-shadow-lg"></i>
+                            <i class="fas fa-robot text-7xl text-primary animate-pulse-slow"></i>
+                            <i class="fas fa-car-side text-4xl text-white absolute -bottom-3 -right-3 drop-shadow-lg"></i>
                         </div>
                     </div>
 
                     <!-- Info -->
                     <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
                         <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">
                                 AIoT / Robotics
                             </span>
-                            <span
-                                class="px-3 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded uppercase tracking-wider">
+                            <span class="px-3 py-1 bg-slate-700/80 text-slate-300 text-xs font-semibold rounded-lg uppercase tracking-wider">
                                 Nhóm 2 người
                             </span>
                         </div>
 
-                        <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition">AutoClaw - AI Robot
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 group-hover:text-primary transition">
+                            AutoClaw - AI Robot
                         </h3>
 
-                        <p class="text-slate-400 mb-6 leading-relaxed">
+                        <p class="text-slate-400 text-sm sm:text-base mb-6 leading-relaxed">
                             Xe tự hành thông minh (Edge AI Robot) tích hợp điều khiển đa phương thức: thủ công, giọng nói tiếng Việt, cử chỉ bàn tay. Xử lý trực tiếp trên GPU Client kết hợp phanh khẩn cấp tự động và Telegram Bot.
                         </p>
 
+                        <!-- Tech Tags -->
                         <div class="mb-6">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Công nghệ</h4>
+                            <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Công nghệ</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">Rust (Tokio / PyO3)</span>
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">Python (Flask / OpenCV)</span>
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">C++ (Embedded / Arduino)</span>
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">Gemini 2.0 Vision AI</span>
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">MediaPipe (Edge AI)</span>
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">IoT (Raspberry Pi 4)</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">Rust (Tokio / PyO3)</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">Python (Flask / OpenCV)</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">C++ (Embedded / Arduino)</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">Gemini 2.0 Vision AI</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">MediaPipe (Edge AI)</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">Raspberry Pi 4</span>
                             </div>
                         </div>
 
+                        <!-- Key Highlights -->
                         <div class="mb-8">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Tính năng nổi bật</h4>
-                            <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
-                                <li><strong>Đa phương thức tương tác:</strong> Điều khiển qua cử chỉ tay (MediaPipe), giọng nói tiếng Việt và Web Dashboard.</li>
-                                <li><strong>Lõi an toàn (Safety Reflex):</strong> Viết bằng Rust chạy đa luồng, tự động kích hoạt phanh khẩn cấp chống va chạm vật lý.</li>
-                                <li><strong>Tuần tra tự trị (AutoClaw Agent):</strong> Tích hợp Gemini 2.0 Vision AI phân tích luồng ảnh camera & sonar để tự động né vật cản.</li>
+                            <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Điểm nổi bật</h4>
+                            <ul class="text-slate-400 text-xs sm:text-sm space-y-2 list-disc list-inside">
+                                <li><strong>Đa phương thức:</strong> Điều khiển qua cử chỉ tay (MediaPipe), giọng nói tiếng Việt và Web Dashboard.</li>
+                                <li><strong>Lõi an toàn (Safety Reflex):</strong> Viết bằng Rust chạy đa luồng, tự động phanh khẩn cấp chống va chạm.</li>
+                                <li><strong>Tuần tra tự trị:</strong> Tích hợp Gemini 2.0 Vision AI phân tích ảnh camera & sonar để tự né chướng ngại vật.</li>
                             </ul>
                         </div>
 
-                        <div class="flex space-x-4 mt-auto">
-                            <a href="https://github.com/NgoDKhoi/NT131.Q21-Group-9#readme" target="_blank"
-                                class="flex-1 text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-lg shadow-primary/20">
-                                <i class="fas fa-book-open mr-2"></i> How to install
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap gap-3 mt-auto">
+                            <a href="https://github.com/NgoDKhoi/NT131.Q21-Group-9#readme" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
+                                <i class="fas fa-book-open"></i> Hướng Dẫn
                             </a>
-                            <a href="https://github.com/NgoDKhoi/NT131.Q21-Group-9.git" target="_blank"
-                                class="flex-1 text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium">
-                                <i class="fab fa-github mr-2"></i> Source
+                            <a href="https://github.com/NgoDKhoi/NT131.Q21-Group-9.git" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
+                                <i class="fab fa-github"></i> Mã Nguồn
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2: Tetris Game (NEW - Added before Kittens) -->
-                <div
-                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group">
+                <!-- Project 2: Fruit Slash Game -->
+                <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700/80 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group"
+                     data-category="game">
                     <!-- Visual -->
-                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/50 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
-                        <!-- Updated background image path, added bg-cover/center and adjusted opacity -->
-                        <div
-                            class="absolute inset-0 bg-[url('../images/projects/tetris.webp')] bg-cover bg-center opacity-100 transition duration-500">
-                        </div>
-                        <div
-                            class="absolute top-0 right-0 w-full h-full bg-black/0 group-hover/image:bg-black/80 transition duration-500 z-10">
-                        </div>
-
+                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
+                        <div class="absolute inset-0 bg-[url('../images/projects/fruit-slash.png')] bg-cover bg-center opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
-                            <!-- Icon for Tetris -->
-                            <i class="fas fa-cubes-stacked text-8xl text-primary animate-pulse-slow"></i>
-                            <i
-                                class="fas fa-gamepad text-5xl text-white absolute -bottom-4 -right-4 drop-shadow-lg"></i>
+                            <i class="fas fa-hand-sparkles text-7xl text-primary animate-pulse-slow"></i>
+                            <i class="fas fa-gamepad text-5xl text-white absolute -bottom-3 -right-3 drop-shadow-lg"></i>
                         </div>
                     </div>
 
                     <!-- Info -->
                     <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
                         <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">
-                                Game
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">
+                                Game / Computer Vision
                             </span>
-                            <span
-                                class="px-3 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded uppercase tracking-wider">
+                            <span class="px-3 py-1 bg-slate-700/80 text-slate-300 text-xs font-semibold rounded-lg uppercase tracking-wider">
                                 Solo
                             </span>
                         </div>
 
-                        <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition">Tetris Game
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 group-hover:text-primary transition">
+                            Fruit Slash Game
                         </h3>
 
-                        <p class="text-slate-400 mb-6 leading-relaxed">
-                            Tái hiện tựa game xếp gạch kinh điển bằng Unity Engine. Tập trung xử lý logic Grid System, thuật toán xoay khối gạch và quản lý trạng thái game.
+                        <p class="text-slate-400 text-sm sm:text-base mb-6 leading-relaxed">
+                            Tựa game WebGL bảo vệ máy chủ kết hợp Computer Vision. Người chơi sử dụng chính bàn tay thật trước Webcam để chém mục tiêu theo thời gian thực nhờ công nghệ nhận diện cử chỉ độ trễ thấp.
                         </p>
 
+                        <!-- Tech Tags -->
                         <div class="mb-6">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Công
-                                nghệ</h4>
+                            <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Công nghệ</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300">Unity</span>
-                                <span
-                                    class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300">C#</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">Unity (WebGL)</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">C#</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">MediaPipe (Edge AI)</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">JavaScript (.jslib)</span>
                             </div>
                         </div>
 
+                        <!-- Key Highlights -->
                         <div class="mb-8">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Tính năng nổi bật</h4>
-                            <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
-                                <li><strong>Hệ thống Grid (Ma trận 2D):</strong> Ánh xạ tọa độ không gian thực để kiểm soát chuyển động và phát hiện va chạm (Collision Detection) với độ chính xác tuyệt đối.</li>
-                                <li><strong>Tối ưu Thuật toán:</strong> Tự xây dựng thuật toán xoay khối (Rotation Matrix), cơ chế sinh ngẫu nhiên (Spawner) và thuật toán quét, xóa hàng liên tục hiệu năng cao.</li>
-                                <li><strong>Quản lý Game State & WebGL:</strong> Sử dụng State Machine quản lý luồng trò chơi mượt mà và tối ưu hóa WebGL Build để vận hành trực tiếp trên trình duyệt.</li>
+                            <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Điểm nổi bật</h4>
+                            <ul class="text-slate-400 text-xs sm:text-sm space-y-2 list-disc list-inside">
+                                <li><strong>Hand Tracking:</strong> Nhận diện và theo dõi tọa độ bàn tay trực tiếp trên trình duyệt với độ trễ cực thấp.</li>
+                                <li><strong>Gesture Recognition:</strong> Tính toán khoảng cách tọa độ để nhận diện thao tác "Pinch" (nhón/chém).</li>
+                                <li><strong>Unity-Web Bridge:</strong> Sử dụng file <code>.jslib</code> đồng bộ dữ liệu ML từ JS vào game loop Unity.</li>
                             </ul>
                         </div>
 
-                        <div class="flex space-x-4 mt-auto">
-                            <a href="https://ngodkhoi.itch.io/tetris-game" target="_blank"
-                                class="flex-1 text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-lg shadow-primary/20">
-                                <i class="fas fa-play mr-2"></i> Play
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap gap-3 mt-auto">
+                            <a href="https://ngodkhoi.vercel.app/Fruit-Slash/" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
+                                <i class="fas fa-play"></i> Chơi Thử Live
                             </a>
-                            <a href="https://github.com/NgoDKhoi/Tetris-Game.git" target="_blank"
-                                class="flex-1 text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium">
-                                <i class="fab fa-github mr-2"></i> Source
+                            <a href="https://github.com/NgoDKhoi/Fruit-Slash-Game" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
+                                <i class="fab fa-github"></i> Mã Nguồn
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3: Exploding Kittens -->
-                <div
-                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group">
-                    <!-- Project Visual -->
-                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/50 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
-                        <div class="absolute inset-0 bg-[url('../images/projects/meo.webp')] bg-cover bg-center opacity-100 transition duration-500">
-                        </div>
-                        <div
-                            class="absolute top-0 right-0 w-full h-full bg-black/0 group-hover/image:bg-black/80 transition duration-500 z-10">
-                        </div>
-
+                <!-- Project 3: Exploding Kittens Game -->
+                <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700/80 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group"
+                     data-category="game">
+                    <!-- Visual -->
+                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
+                        <div class="absolute inset-0 bg-[url('../images/projects/meo.webp')] bg-cover bg-center opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
-                            <i class="fas fa-bomb text-8xl text-primary animate-pulse-slow"></i>
-                            <i class="fas fa-cat text-6xl text-white absolute -bottom-2 -right-4 drop-shadow-lg"></i>
+                            <i class="fas fa-bomb text-7xl text-primary animate-pulse-slow"></i>
+                            <i class="fas fa-cat text-5xl text-white absolute -bottom-2 -right-3 drop-shadow-lg"></i>
                         </div>
                     </div>
 
-                    <!-- Project Info -->
+                    <!-- Info -->
                     <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
                         <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">
-                                Game
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">
+                                Multiplayer Game
                             </span>
-                            <span
-                                class="px-3 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded uppercase tracking-wider">
+                            <span class="px-3 py-1 bg-slate-700/80 text-slate-300 text-xs font-semibold rounded-lg uppercase tracking-wider">
                                 Nhóm 4 người
                             </span>
                         </div>
 
-                        <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition">Exploding Kittens Game</h3>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 group-hover:text-primary transition">
+                            Exploding Kittens Game
+                        </h3>
 
-                        <p class="text-slate-400 mb-6 leading-relaxed">
-                            Một game thẻ bài chiến thuật Multiplayer dựa trên Exploding Kittens (mèo nổ) xây dựng trên Unity Engine và Firebase. Hỗ trợ hệ thống đăng nhập, tìm kiếm phòng chơi và thi đấu trực tuyến với bạn bè.
+                        <p class="text-slate-400 text-sm sm:text-base mb-6 leading-relaxed">
+                            Game thẻ bài chiến thuật Multiplayer thời gian thực dựa trên Exploding Kittens (Mèo nổ) xây dựng trên Unity Engine và Firebase. Hỗ trợ hệ thống phòng chơi (Lobby) và thi đấu trực tuyến với bạn bè.
                         </p>
 
+                        <!-- Tech Tags -->
                         <div class="mb-6">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Công
-                                nghệ
-                            </h4>
+                            <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Công nghệ</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300">Unity</span>
-                                <span
-                                    class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300">C#</span>
-                                <span
-                                    class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300">Firebase</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">Unity Engine</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">C#</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">Firebase Auth</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">Realtime Database</span>
                             </div>
                         </div>
 
+                        <!-- Key Highlights -->
                         <div class="mb-8">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Tính năng nổi bật</h4>
-                            <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
-                                <li>Hệ thống tài khoản và lưu trữ tiến trình qua Firebase Authentication.</li>
-                                <li>Tạo phòng (Lobby) và thi đấu Online Multiplayer theo thời gian thực.</li>
-                                <li>Tái hiện đầy đủ thẻ bài chiến thuật (Explode, Defuse, Attack, Skip, Shuffle).</li>
+                            <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Điểm nổi bật</h4>
+                            <ul class="text-slate-400 text-xs sm:text-sm space-y-2 list-disc list-inside">
+                                <li>Hệ thống tài khoản và đồng bộ tiến trình thông qua Firebase Authentication.</li>
+                                <li>Cơ chế tạo phòng (Lobby), bắt cặp và thi đấu Online Multiplayer thời gian thực.</li>
+                                <li>Tái hiện đầy đủ cơ chế thẻ bài chiến thuật (Explode, Defuse, Attack, Skip, Shuffle).</li>
                             </ul>
                         </div>
 
-                        <div class="flex space-x-4 mt-auto">
-                            <a href="https://github.com/NgoDKhoi/Meo_Boom/blob/main/README.md" target="_blank"
-                                class="flex-1 text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-lg shadow-primary/20">
-                                <i class="fas fa-book-open mr-2"></i> How to install
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap gap-3 mt-auto">
+                            <a href="https://github.com/NgoDKhoi/Meo_Boom/blob/main/README.md" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
+                                <i class="fas fa-book-open"></i> Hướng Dẫn
                             </a>
-                            <a href="https://github.com/NgoDKhoi/M-o-N-" target="_blank"
-                                class="flex-1 text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium">
-                                <i class="fab fa-github mr-2"></i> Source
+                            <a href="https://github.com/NgoDKhoi/M-o-N-" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
+                                <i class="fab fa-github"></i> Mã Nguồn
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 4: Fruit-Slash (Server-Defender) -->
-                <div
-                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group">
-                    <!-- Project Visual -->
-                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/50 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
-                        <div class="absolute inset-0 bg-[url('../images/projects/fruit-slash.png')] bg-cover bg-center opacity-100 transition duration-500">
-                        </div>
-                        <div
-                            class="absolute top-0 right-0 w-full h-full bg-black/0 group-hover/image:bg-black/80 transition duration-500 z-10">
-                        </div>
-
+                <!-- Project 4: Tetris Game -->
+                <div class="project-card bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700/80 hover:border-primary/50 transition duration-500 shadow-2xl flex flex-col md:flex-row group"
+                     data-category="game">
+                    <!-- Visual -->
+                    <div class="w-full md:w-[45%] min-h-[300px] bg-black/60 flex items-center justify-center p-8 relative overflow-hidden group/image shrink-0">
+                        <div class="absolute inset-0 bg-[url('../images/projects/tetris.webp')] bg-cover bg-center opacity-100 transition duration-500"></div>
+                        <div class="absolute inset-0 bg-black/30 group-hover/image:bg-black/80 transition duration-500 z-10"></div>
                         <div class="relative z-20 transform group-hover/image:scale-105 opacity-0 group-hover/image:opacity-100 transition duration-500">
-                            <i class="fas fa-hand-sparkles text-8xl text-primary animate-pulse-slow"></i>
-                            <i class="fas fa-gamepad text-6xl text-white absolute -bottom-2 -right-4 drop-shadow-lg"></i>
+                            <i class="fas fa-cubes-stacked text-7xl text-primary animate-pulse-slow"></i>
+                            <i class="fas fa-gamepad text-5xl text-white absolute -bottom-3 -right-3 drop-shadow-lg"></i>
                         </div>
                     </div>
 
-                    <!-- Project Info -->
+                    <!-- Info -->
                     <div class="w-full md:w-[55%] p-8 md:p-10 flex flex-col justify-center">
                         <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">
-                                Game / AI
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">
+                                Classic Game / Algorithms
                             </span>
-                            <span
-                                class="px-3 py-1 bg-slate-700 text-slate-300 text-xs font-bold rounded uppercase tracking-wider">
+                            <span class="px-3 py-1 bg-slate-700/80 text-slate-300 text-xs font-semibold rounded-lg uppercase tracking-wider">
                                 Solo
                             </span>
                         </div>
 
-                        <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition">Fruit Slash Game</h3>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 group-hover:text-primary transition">
+                            Tetris Game
+                        </h3>
 
-                        <p class="text-slate-400 mb-6 leading-relaxed">
-                            Tựa game WebGL bảo vệ máy chủ kết hợp Computer Vision. Trò chơi cho phép người chơi sử dụng chính bàn tay thực tế của mình trước Webcam để chém các mục tiêu thông qua công nghệ nhận diện cử chỉ thời gian thực.
+                        <p class="text-slate-400 text-sm sm:text-base mb-6 leading-relaxed">
+                            Tái hiện tựa game xếp gạch kinh điển bằng Unity Engine. Tập trung xử lý logic Grid System ma trận 2D, thuật toán xoay khối gạch và tối ưu WebGL Build chạy trực tiếp trên trình duyệt.
                         </p>
 
+                        <!-- Tech Tags -->
                         <div class="mb-6">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Công nghệ</h4>
+                            <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Công nghệ</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">Unity (WebGL)</span>
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">C#</span>
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">MediaPipe (Edge AI)</span>
-                                <span class="px-3 py-1.5 bg-slate-800 border border-slate-600 rounded text-sm text-slate-300 hover:text-primary transition-colors cursor-default">JavaScript</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">Unity Engine</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">C#</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">WebGL Build</span>
+                                <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-lg text-xs text-slate-300 font-medium">2D Grid Algorithm</span>
                             </div>
                         </div>
 
+                        <!-- Key Highlights -->
                         <div class="mb-8">
-                            <h4 class="text-white text-sm font-semibold mb-3 uppercase tracking-wide opacity-80">Tính năng nổi bật</h4>
-                            <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
-                                <li><strong>Tích hợp MediaPipe:</strong> Nhận diện và theo dõi tọa độ bàn tay (Hand Tracking) trực tiếp trên trình duyệt với độ trễ siêu thấp.</li>
-                                <li><strong>Xử lý cử chỉ (Gesture Recognition):</strong> Tính toán khoảng cách tọa độ để nhận diện thao tác "Pinch" (nhón/chém) thay cho thao tác click chuột truyền thống.</li>
-                                <li><strong>Unity-Web Bridge:</strong> Sử dụng file <code>.jslib</code> để đồng bộ hóa dữ liệu luồng ML từ JavaScript vào game loop của Unity theo thời gian thực.</li>
+                            <h4 class="text-slate-400 text-xs font-semibold mb-2.5 uppercase tracking-wider">Điểm nổi bật</h4>
+                            <ul class="text-slate-400 text-xs sm:text-sm space-y-2 list-disc list-inside">
+                                <li><strong>Hệ thống Grid:</strong> Ánh xạ tọa độ không gian thực kiểm soát va chạm (Collision Detection) chính xác.</li>
+                                <li><strong>Tối ưu thuật toán:</strong> Xây dựng Rotation Matrix xoay khối, Spawner ngẫu nhiên và quét xóa hàng hiệu năng cao.</li>
+                                <li><strong>Game State Machine:</strong> Quản lý trạng thái luồng game chặt chẽ, mượt mà trên nền tảng WebGL.</li>
                             </ul>
                         </div>
 
-                        <div class="flex space-x-4 mt-auto">
-                            <a href="https://ngodkhoi.vercel.app/Fruit-Slash/" target="_blank"
-                                class="flex-1 text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-lg shadow-primary/20">
-                                <i class="fas fa-play mr-2"></i> Play
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap gap-3 mt-auto">
+                            <a href="https://ngodkhoi.itch.io/tetris-game" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 bg-primary hover:bg-primaryHover text-white text-sm rounded-lg transition font-medium shadow-md shadow-primary/20 inline-flex items-center justify-center gap-2">
+                                <i class="fas fa-play"></i> Chơi Trên Itch.io
                             </a>
-                            <a href="https://github.com/NgoDKhoi/Fruit-Slash-Game" target="_blank"
-                                class="flex-1 text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium">
-                                <i class="fab fa-github mr-2"></i> Source
+                            <a href="https://github.com/NgoDKhoi/Tetris-Game.git" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 min-w-[140px] text-center px-4 py-2.5 border border-slate-600 hover:border-white text-white text-sm rounded-lg transition font-medium inline-flex items-center justify-center gap-2">
+                                <i class="fab fa-github"></i> Mã Nguồn
                             </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-
-
     <!-- Contact Section -->
     <section id="contact" class="py-24 relative overflow-hidden">
-        <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10">
-        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold text-white mb-6">Liên Hệ</h2>
-            <p class="text-slate-400 mb-12 text-lg">
-                Tôi luôn sẵn sàng cho những thử thách mới. Hãy kết nối với tôi!
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Kết Nối Với Tôi</h2>
+            <p class="text-slate-400 mb-12 text-base sm:text-lg max-w-xl mx-auto">
+                Tôi luôn sẵn sàng đón nhận những cơ hội hợp tác và thử thách kỹ thuật mới.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Email -->
                 <a href="mailto:Khoi123719@gmail.com"
-                    class="group bg-card p-6 rounded-xl border border-slate-700 hover:border-primary transition duration-300">
-                    <div
-                        class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-primary group-hover:text-white transition">
-                        <i class="fas fa-envelope"></i>
+                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-primary transition duration-300">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-envelope text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">Email</h3>
                     <p class="text-slate-400 text-sm group-hover:text-primary transition">Khoi123719@gmail.com</p>
                 </a>
 
                 <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank"
-                    class="group bg-card p-6 rounded-xl border border-slate-700 hover:border-primary transition duration-300">
-                    <div
-                        class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-[#0077b5] group-hover:text-white transition">
-                        <i class="fab fa-linkedin-in"></i>
+                <a href="https://www.linkedin.com/in/ngodkhoi/" target="_blank" rel="noopener noreferrer"
+                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-primary transition duration-300">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-[#0077b5] group-hover:text-white transition">
+                        <i class="fab fa-linkedin-in text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">LinkedIn</h3>
-                    <p class="text-slate-400 text-sm group-hover:text-[#0077b5] transition">Kết nối ngay</p>
+                    <p class="text-slate-400 text-sm group-hover:text-[#0077b5] transition">in/ngodkhoi</p>
                 </a>
 
                 <!-- Facebook -->
-                <a href="https://facebook.com/ngo.d.khoi.2024" target="_blank"
-                    class="group bg-card p-6 rounded-xl border border-slate-700 hover:border-primary transition duration-300">
-                    <div
-                        class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-[#1877f2] group-hover:text-white transition">
-                        <i class="fab fa-facebook-f"></i>
+                <a href="https://facebook.com/ngo.d.khoi.2024" target="_blank" rel="noopener noreferrer"
+                    class="group bg-card p-6 rounded-2xl border border-slate-700/80 hover:border-primary transition duration-300">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 group-hover:bg-[#1877f2] group-hover:text-white transition">
+                        <i class="fab fa-facebook-f text-lg"></i>
                     </div>
                     <h3 class="text-white font-medium mb-1">Facebook</h3>
-                    <p class="text-slate-400 text-sm group-hover:text-[#1877f2] transition">Kết nối ngay</p>
+                    <p class="text-slate-400 text-sm group-hover:text-[#1877f2] transition">Ngô Đình Khôi</p>
                 </a>
             </div>
         </div>
@@ -574,12 +568,91 @@
     <footer class="bg-dark border-t border-slate-800 py-8">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <p class="text-slate-500 text-sm">
-                © 2025 Ngô Đình Khôi. Built with HTML & Tailwind CSS & Artificial Intelligence.
+                © 2026 Ngô Đình Khôi. Built with HTML, Tailwind CSS & Engineering Passion.
             </p>
         </div>
     </footer>
 
-    <!-- Google Analytics (đặt cuối body để không chặn render) -->
+    <!-- Back to Top Button -->
+    <button id="back-to-top" type="button" aria-label="Back to top"
+        class="fixed bottom-6 right-6 z-40 bg-card border border-slate-700 hover:border-primary text-primary w-11 h-11 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-primary hover:text-white">
+        <i class="fas fa-arrow-up text-sm"></i>
+    </button>
+
+    <!-- Interactive Scripts: Mobile menu, Project Filters, Back to Top -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+        }
+
+        // 2. Project Category Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button style
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 3. Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.add('opacity-100');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.remove('opacity-100');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    </script>
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9570SBYWV"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
