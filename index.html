@@ -43,19 +43,21 @@
     
     <style>
         /* 1. Global Overflow Prevention & Smooth Navigation */
-        html, body {
+        html {
             max-width: 100%;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            scroll-padding-top: 5rem;
+            scroll-padding-top: 4rem;
         }
 
         body {
+            max-width: 100%;
+            overflow-x: hidden;
             font-family: 'Inter', sans-serif;
         }
 
-        section {
-            scroll-margin-top: 5rem;
+        #contact {
+            min-height: calc(100vh - 4rem);
         }
 
         /* Gradient xanh lá cho chữ */
@@ -1096,6 +1098,30 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
+
+        // 4. Smooth Anchor Scrolling with Exact Fixed Navbar Offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (!targetId || targetId === '#') return;
+                const targetElem = document.querySelector(targetId);
+                if (targetElem) {
+                    e.preventDefault();
+                    if (typeof closeMenu === 'function' && typeof mobileMenu !== 'undefined' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        closeMenu();
+                    }
+                    const navHeight = 64; // height of fixed navbar (4rem = 64px)
+                    const targetTop = targetElem.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    window.scrollTo({
+                        top: Math.max(0, Math.round(targetTop)),
+                        behavior: 'smooth'
+                    });
+                    if (window.history && window.history.pushState) {
+                        window.history.pushState(null, null, targetId);
+                    }
+                }
+            });
+        });
     </script>
 
     <!-- Google Analytics -->
